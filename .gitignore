@@ -1,0 +1,4 @@
+*.license
+output/*
+__pycache__/*
+__pycache__.py
