@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<application-configuration>
+  <setupStep>complete</setupStep>
+  <setupType>install.new</setupType>
+  <buildNumber>665</buildNumber>
+  <properties>
+    <property name="crowd.server.id">B5BZ-QI4U-VFFR-AEPE</property>
+    <property name="hibernate.c3p0.acquire_increment">1</property>
+    <property name="hibernate.c3p0.idle_test_period">100</property>
+    <property name="hibernate.c3p0.max_size">30</property>
+    <property name="hibernate.c3p0.max_statements">0</property>
+    <property name="hibernate.c3p0.min_size">0</property>
+    <property name="hibernate.c3p0.timeout">30</property>
+    <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+    <property name="hibernate.connection.password">admin</property>
+    <property name="hibernate.connection.url">jdbc:postgresql://172.17.0.1:5432/crowd</property>
+    <property name="hibernate.connection.username">postgres</property>
+    <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+    <property name="hibernate.setup">true</property>
+    <property name="license">AAABTA0ODAoPeNpNkM1uwjAQhO9+Cks99GSEA1QtkqWWJK2CkoCU0B+pF2M2xFJiR7ZDy9vXQFA57
+MU78+2M78q6xwV0mFJMJ/PJw3w2xmFU4mBMpygCK4zsnNSKhUb/7L7nONRt2yvpjkicXkZcOHkA5
+kwPKDTAT+KIO2AnAhk/ERqgUCvndTlvgRWw5dZJUDjT1oIZMKkUoCyUxw7OsnCVZZs8Kb+u5jjjs
+mHt2fPc6eboQNQjn0TAqDIoPvCmPx9nFW8sIC9XDhRXAuLfTprjNdQDoZQEM7Qye66kvXjWA/A+9
+zxc6K6WHL8oJ/0laXEhaq0brCscq71UAEaqPSrinPkhwTR4nEwDVIA5gEkitkgXH+Qt+QxI+v66J
+MkiXw41877dgllVG9/CMkLR0Nub0iS6hQ2Lm+y9amQrHezQujei5hb+//lS6Q/WLJqZMCwCFEODY
+mgoowDyMP6pMp7A8lN+ulSSAhQJ0uFsx471cfxXFrXk2JgGf4qkIA==X02gg</property>
+  </properties>
+</application-configuration>

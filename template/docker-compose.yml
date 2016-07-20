@@ -1,0 +1,26 @@
+version: '2'
+services:
+  {% for image in images %}
+  {{ image.name }}:
+    image: {{ image.name }}
+    build: .{{ basedir }}/{{ image.name }}/
+    ports:
+      - "{{ image.port }}:{{ image.port }}"
+    networks:
+      net:
+        ipv4_address: {{image.ip}}
+    {#{% if image.volumes %}
+    volumes:
+      {% for volume in image.volumes %}
+      - /Users/data/{{ image.name }}/{{ volume.name }}:{{ volume.dir }}:Z
+      {% endfor %}
+    {% endif %}#}
+  {% endfor %}
+networks:
+  net:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      - subnet: 173.17.0.0/16
+        gateway: 173.17.5.254

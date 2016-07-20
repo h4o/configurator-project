@@ -1,0 +1,18 @@
+
+crowd:
+    baseUrl: 'http://localhost:8095'
+    license: 'crowd.license'
+    serverId: 'BFV6-7P8Y-30RK-Y1XO'
+    subdirectory: 'crowd'
+postgres:
+    postgresUser: 'noopoe'
+    postgresPassword: 'nope'
+bitbucket:
+  baseUrl: 'http://localhost:8095'
+  license: 'bitbucket.license'
+  username: 'username'
+  password: 'password'
+  subdirectory: 'bitbucket'
+  ownerMail: 'mosser@mosser.fr'
+  ownerName: 'me'
+  
