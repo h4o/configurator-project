@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-host="db"
+host="172.17.0.1"
 
 cmd="$@"
 
