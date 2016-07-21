@@ -1,0 +1,37 @@
+version: '1.0-SNAPSHOT'
+meta:
+  port: 8080
+required:
+  license:
+    type: 'string'
+    from: 'filesystem'
+  baseUrl:
+    type: 'string'
+    from: 'input'
+  subdirectory:
+    type: 'string'
+    from: 'input'
+  serverId:
+    type: 'string'
+  images:
+    - postgres
+    - nginx
+postgres:
+  postgresUser:
+    type: 'string'
+    from: 'postgres'
+    name: 'userName'
+  postgresPassword:
+    type: 'string'
+    from: 'postgres'
+    name: 'password'
+crowd:
+  subdirectory:
+    type: 'string'
+  baseUrl:
+    type: 'string'
+bitbucket:
+  subdirectory:
+    type: 'string'
+  baseUrl:
+    type: 'string'

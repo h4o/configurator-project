@@ -1,6 +1,6 @@
 
 crowd:
-    baseUrl: 'http://localhost:8095'
+    baseUrl: 'http://localhost'
     license: 'crowd.license'
     serverId: 'BFV6-7P8Y-30RK-Y1XO'
     subdirectory: 'crowd'
@@ -8,11 +8,17 @@ postgres:
     postgresUser: 'noopoe'
     postgresPassword: 'nope'
 bitbucket:
-  baseUrl: 'http://localhost:8095'
+  baseUrl: 'http://localhost'
   license: 'bitbucket.license'
   username: 'username'
   password: 'password'
   subdirectory: 'bitbucket'
   ownerMail: 'mosser@mosser.fr'
   ownerName: 'me'
+  serverId: 'BHXZ-7DZC-MKVG-YG2F'
+jira:
+  baseUrl: 'http://localhost'
+  license: 'jira.license'
+  subdirectory: 'jira'
+  serverId: 'B8TN-HTUL-7W5A-Y7E5'
   
