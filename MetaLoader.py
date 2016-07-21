@@ -15,7 +15,7 @@ class MetaLoader:
 	def getConnectors(self):
 		connectors = []
 		for connector in self.meta:
-			if connector != 'required' and connector != 'version':
+			if connector != 'required' and connector != 'version' and connector != 'meta':
 				connectors.append(connector)
 		return connectors
 
