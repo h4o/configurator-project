@@ -5,10 +5,10 @@
   <database-type>postgres72</database-type>
  <schema-name>public</schema-name>
   <jdbc-datasource>
-    <url>jdbc:postgresql://172.17.0.1:5432/jira</url>
+    <url>jdbc:postgresql://{{postgres.ip}}:5432/jira</url>
     <driver-class>org.postgresql.Driver</driver-class>
-    <username>postgres</username>
-    <password>admin</password>
+    <username>{{postgres.postgresUser}}</username>
+    <password>{{postgres.postgresPassword}}</password>
     <pool-min-size>20</pool-min-size>
     <pool-max-size>20</pool-max-size>
     <pool-max-wait>30000</pool-max-wait>
