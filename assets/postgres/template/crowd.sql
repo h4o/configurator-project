@@ -400,9 +400,9 @@ COPY cwd_app_dir_mapping (id, application_id, directory_id, allow_all, list_inde
 196609	2	32769	F	0
 196610	3	32769	T	0
 196611	4	32769	T	0
-196612	5	32769	T	0
-196613	6	32769	T	0
-\.
+{% if jira %}196612	5	32769	T	0
+{% endif %}{% if bitbucket %}196613	6	32769	T	0
+{% endif %}\.
 
 
 --
@@ -446,7 +446,7 @@ COPY cwd_app_dir_operation (app_dir_mapping_id, operation_type) FROM stdin;
 196611	UPDATE_USER_ATTRIBUTE
 196611	CREATE_ROLE
 196611	UPDATE_GROUP_ATTRIBUTE
-196612	UPDATE_ROLE_ATTRIBUTE
+{% if jira %}196612	UPDATE_ROLE_ATTRIBUTE
 196612	DELETE_GROUP
 196612	CREATE_USER
 196612	DELETE_USER
@@ -458,7 +458,7 @@ COPY cwd_app_dir_operation (app_dir_mapping_id, operation_type) FROM stdin;
 196612	UPDATE_USER_ATTRIBUTE
 196612	CREATE_ROLE
 196612	UPDATE_GROUP_ATTRIBUTE
-196613	UPDATE_ROLE_ATTRIBUTE
+{% endif %}{% if bitbucket %}196613	UPDATE_ROLE_ATTRIBUTE
 196613	DELETE_GROUP
 196613	CREATE_USER
 196613	DELETE_USER
@@ -470,7 +470,7 @@ COPY cwd_app_dir_operation (app_dir_mapping_id, operation_type) FROM stdin;
 196613	UPDATE_USER_ATTRIBUTE
 196613	CREATE_ROLE
 196613	UPDATE_GROUP_ATTRIBUTE
-\.
+{% endif %}\.
 
 
 --
@@ -482,9 +482,9 @@ COPY cwd_application (id, application_name, lower_application_name, created_date
 2	crowd	crowd	2016-07-07 08:39:37.895	2016-07-07 08:39:42.233	T	Crowd console	CROWD	{PKCS5S2}+ebYspXujIGikRoLVenN/BpbtwEg+WfR1u1Okk1BJpFG4nJwbeAr0Sv5U+YG7x5k
 3	crowd-openid-server	crowd-openid-server	2016-07-07 08:39:41.799	2016-07-07 08:39:42.234	T	CrowdID OpenID server	GENERIC_APPLICATION	{PKCS5S2}FR5D2WA0AbOfVNlegv1TQ0CaEh5kGqFIifunM5IAqfEXRqKObAHpQMbTtXCukb/j
 4	polyproject	polyproject	2016-07-07 08:41:24.738	2016-07-07 08:41:24.739	T	Appli de stage	GENERIC_APPLICATION	{PKCS5S2}5nDw0ntnUSnkEnkEZovxnjiMYHW9vyqgSoCzHx85BmiofzKexjP3yMbKy4ABNhiS
-6	bitbucket	bitbucket	2016-07-07 08:42:14.028	2016-07-11 15:12:57.099	T		STASH	{PKCS5S2}QHH4F5gF4JGdU4sRY9HVA0Fwfh30bLD77b/k8UMqID6HEBaCw+aSFwoB4xXBEYaK
-5	jira	jira	2016-07-07 08:41:47.79	2016-07-11 15:15:20.199	T		JIRA	{PKCS5S2}S005JOmfoAFL9kUnfhEE5xc8pC1R9wmprXrPhIz4e4liG+RvsHd/FJWWbxmpxkLW
-\.
+{% if bitbucket%}6	bitbucket	bitbucket	2016-07-07 08:42:14.028	2016-07-11 15:12:57.099	T		STASH	{PKCS5S2}QHH4F5gF4JGdU4sRY9HVA0Fwfh30bLD77b/k8UMqID6HEBaCw+aSFwoB4xXBEYaK
+{% endif %}{% if jira %}5	jira	jira	2016-07-07 08:41:47.79	2016-07-11 15:15:20.199	T		JIRA	{PKCS5S2}S005JOmfoAFL9kUnfhEE5xc8pC1R9wmprXrPhIz4e4liG+RvsHd/FJWWbxmpxkLW
+{% endif %}\.
 
 
 --
@@ -493,7 +493,7 @@ COPY cwd_application (id, application_name, lower_application_name, created_date
 
 COPY cwd_application_address (application_id, remote_address) FROM stdin;
 2	localhost
-2	172.17.0.3
+2	{{crowd.ip}}
 2	9a7324b8cbea
 2	0:0:0:0:0:0:0:1
 2	127.0.0.1
@@ -501,11 +501,11 @@ COPY cwd_application_address (application_id, remote_address) FROM stdin;
 3	172.17.0.3
 3	127.0.0.1
 4	172.18.0.1
-5	172.17.0.1
-6	{{bitbucket.ip}}
-6	172.18.0.1
-5	172.18.0.1
-\.
+{% if jira %}5	172.17.0.1
+5	{{ jira.ip }}
+{% endif %}{% if bitbucket %}6   {{ bitbucket.ip }}
+6   172.18.0.1
+{% endif %}\.
 
 
 --
@@ -526,11 +526,11 @@ COPY cwd_application_attribute (application_id, attribute_value, attribute_name)
 3	true	atlassian_sha1_applied
 4	http://172.17.0.1/	applicationURL
 4	true	atlassian_sha1_applied
-5	http://172.17.0.1:8080/jira/	applicationURL
+{% if jira %}5	{{jira.baseUrl}}/{{jira.subdirectory}}/	applicationURL
 5	true	atlassian_sha1_applied
-6	http://172.17.0.1:7990/bitbucket	applicationURL
+{% endif %}{% if bitbucket %}6	{{bitbucket.baseUrl}}/{{bitbucket.subdirectory}}/	applicationURL
 6	true	atlassian_sha1_applied
-\.
+{% endif %}\.
 
 
 --
