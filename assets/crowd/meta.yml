@@ -1,0 +1,28 @@
+version: '1.0-SNAPSHOT'
+meta:
+  port: 8095
+required:
+  license:
+    type: 'string'
+    from: 'filesystem'
+  baseUrl:
+    type: 'string'
+    from: 'input'
+  serverId:
+    type: 'string'
+    from: 'input'
+  subdirectory:
+    type: 'string'
+    from: 'input'
+  images:
+    - postgres
+    - nginx
+postgres:
+  postgresUser:
+    type: 'string'
+    from: 'postgres'
+    name: 'userName'
+  postgresPassword:
+    type: 'string'
+    from: 'postgres'
+    name: 'password'

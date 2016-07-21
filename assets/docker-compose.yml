@@ -1,0 +1,41 @@
+
+version: '2'
+services:
+  db:
+    image: postgres-custom
+    build: ./postgres-custom/
+    ports:
+        - "5432:5432"
+    volumes:
+        - /data/db:/var/lib/postgresql/data
+  crowd:
+    build: ./crowd/
+    ports:
+     - "8095:8095"
+    depends_on:
+        - db
+  bitbucket:
+    build: ./bitbucket/
+    ports:
+        - "7990:7990"
+    depends_on:
+        - db
+    volumes:
+        - ~/logs/bitbucket:/var/atlassian/application-data/bitbucket/log
+        - /data/bitbucket:/var/atlassian/application-data/bitbucket
+  jira:
+    build: ./jira/
+    ports:
+        - "8080:8080"
+    depends_on:
+        - db
+    volumes:
+        - ~/logs/jira:/var/atlassian/application-data/jira/log
+  nginx-proxy:
+    build: ./nginx/
+    ports:
+      - "80:80"
+    depends_on:
+        - crowd
+        - jira
+        - bitbucket

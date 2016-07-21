@@ -1,0 +1,17 @@
+version: '1.0-SNAPSHOT'
+required:
+
+
+bitbucket:
+    subdirectory:
+    type: 'string'
+    from: 'input'
+crowd:
+    subdirectory:
+    type: 'string'
+    from: 'input'
+meta:
+    port: 80
+
+
+  

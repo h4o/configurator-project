@@ -2,3 +2,5 @@
 output/*
 __pycache__/*
 __pycache__.py
+*.pyc
+*/__pycache__/*

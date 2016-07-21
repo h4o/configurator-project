@@ -1,0 +1,22 @@
+version: '1.0-SNAPSHOT'
+meta:
+  port: 5432
+
+required:
+  files:
+      - bitbucket.properties:/var/atlassian/application-data/bitbucket/shared
+  postgresUser:
+    type: 'string'
+    from: 'postgres'
+    name: 'userName'
+  postgresPassword:
+    type: 'string'
+    from: 'postgres'
+    name: 'password'
+
+bitbucket:
+  
+
+  
+crowd:
+  

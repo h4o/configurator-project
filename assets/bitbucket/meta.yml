@@ -1,0 +1,46 @@
+version: '1.0-SNAPSHOT'
+meta:
+  port: 7990
+  volumes:
+    -  data:/var/atlassian/application-data/bitbucket/shared/
+required:
+  files:
+      - bitbucket.properties:/var/atlassian/application-data/bitbucket/shared
+  license:
+    type: 'string'
+    from: 'filesystem'
+  baseUrl:
+    type: 'string'
+    from: 'input'
+  subdirectory:
+    type: 'string'
+    from: 'input'
+  ownerName:
+    type: 'string'
+    from: 'input'
+  ownerMail:
+    type: 'string'
+    from: 'input'
+  subdirectory:
+    type: 'string'
+    from: 'input'
+  username:
+    type: 'string'
+  password:
+    type: 'string'
+  images:
+    - postgres
+    - nginx
+postgres:
+  files:
+      - bitbucket.properties:/var/atlassian/application-data/bitbucket/shared
+  postgresUser:
+    type: 'string'
+    from: 'postgres'
+    name: 'userName'
+  postgresPassword:
+    type: 'string'
+    from: 'postgres'
+    name: 'password'
+
+  
