@@ -25,6 +25,8 @@ required:
     type: 'string'
   password:
     type: 'string'
+  serverId:
+    type: 'string'
   images:
     - postgres
     - nginx

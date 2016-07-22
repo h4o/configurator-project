@@ -4358,7 +4358,7 @@ bitbucket.global.settings	applinks.admin.6005122a-c12f-3cd8-9ccf-6d2a5af48dfa.pr
 bitbucket.global.settings	com.atlassian.analytics.client.configuration..analytics_enabled	true	20
 bitbucket.global.settings	com.atlassian.analytics.client.configuration..policy_acknowledged	true	21
 bitbucket.global.settings	com.atlassian.analytics.client.configuration.uuid	d5f2978e-8cb8-41cd-8d31-51a587353fb3	22
-bitbucket.global.settings	com.atlassian.analytics.client.configuration.serverid	BBFU-41SE-713A-8QWH	23
+bitbucket.global.settings	com.atlassian.analytics.client.configuration.serverid	{{ bitbucket.serverId }}
 bitbucket.global.settings	com.atlassian.bitbucket.server.bitbucket-git:build	7	24
 bitbucket.global.settings	com.atlassian.upm:notifications:notification-plugin.request	#java.util.List\n	26
 bitbucket.global.settings	com.atlassian.upm:notifications:notification-edition.mismatch	#java.util.List\n	27
