@@ -1,4 +1,4 @@
---
+F--
 -- PostgreSQL database dump
 --
 
@@ -500,11 +500,11 @@ COPY cwd_application_address (application_id, remote_address) FROM stdin;
 3	localhost
 3	172.17.0.3
 3	127.0.0.1
-4	172.18.0.1
+4	{{nginx.ip}}
 {% if jira %}5	172.17.0.1
 5	{{ jira.ip }}
-{% endif %}{% if bitbucket %}6   {{ bitbucket.ip }}
-6   172.18.0.1
+{% endif %}{% if bitbucket %}6	{{ bitbucket.ip }}
+6	172.18.0.1
 {% endif %}\.
 
 
