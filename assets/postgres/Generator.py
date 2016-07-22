@@ -22,6 +22,7 @@ class Generator:
 			conf['config']['jira']['license'] = conf['config']['jira']['license'].replace('\n','\\')
 		if('crowd' in conf['linked-config']):
 			conf['config']['crowd'] = conf['linked-config']['crowd']
+		conf['config']['nginx'] = conf['linked-config']['nginx']
 		out = template.render(config['config'])
 		with open(dest+"Dockerfile", "w") as fh:
 			fh.write(out)
