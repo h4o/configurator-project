@@ -8895,8 +8895,8 @@ COPY propertystring (id, propertyvalue) FROM stdin;
 1	71013
 {% if bitbucket %}10511	stash
 10512	Polytech Bitbucket
-10513	http://{{bitbucket.baseUrl}}/{{bitbucket.subdirectory}}
-10514	http://{{bitbucket.baseUrl}}/{{bitbucket.subdirectory}}
+10513	{{bitbucket.baseUrl}}/{{bitbucket.subdirectory}}
+10514	{{bitbucket.baseUrl}}/{{bitbucket.subdirectory}}
 10515	#java.util.List\n00668a2a-a381-3e0f-9b83-65011fdbc0c7
 10516	true
 10517	Bitbucket:0900407872
