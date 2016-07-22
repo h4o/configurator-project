@@ -11,7 +11,7 @@ class Generator:
 	def generate(self,config,base,dest):
 		print("we generate our files !")
 		copy_tree(base,dest)
-		
+
 		conf = copy.deepcopy(config)
 		env = Environment(loader=FileSystemLoader(dest+'template'))
 		template = env.get_template('Dockerfile')
@@ -35,17 +35,17 @@ class Generator:
 			fh.write(out)
 		if('bitbucket' in conf['linked-config']):
 			template = env.get_template('bitbucket.sql')
-			out = template.render(config['config'])
+			out = template.render(conf['config'])
 			with open(dest+"bitbucket.sql", "w") as fh:
 				fh.write(out)
 		if('crowd' in conf['linked-config']):
 			template = env.get_template('crowd.sql')
-			out = template.render(config['config'])
+			out = template.render(conf['config'])
 			with open(dest+"crowd.sql", "w") as fh:
 				fh.write(out)
 		if('jira' in conf['linked-config']):
 			template = env.get_template('jira.sql')
-			out = template.render(config['config'])
+			out = template.render(conf['config'])
 			with open(dest+"jira.sql", "w") as fh:
 				fh.write(out)
 
