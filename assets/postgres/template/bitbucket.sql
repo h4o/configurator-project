@@ -4549,7 +4549,7 @@ COPY sta_permission_type (perm_id, perm_weight) FROM stdin;
 8	5000
 4	6000
 5	7000
-6	9000
+6	10000
 7	10000
 \.
 
