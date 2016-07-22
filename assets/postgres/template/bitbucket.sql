@@ -4342,7 +4342,7 @@ bitbucket.global.settings	AO_616D7B_#	1	3
 bitbucket.global.settings	AO_FB71B4_#	3	4
 bitbucket.global.settings	AO_02A6C0_#	1	5
 {% if jira %}bitbucket.global.settings	applinks.admin.6005122a-c12f-3cd8-9ccf-6d2a5af48dfa.type	jira	6
-bitbucket.global.settings	applinks.admin.6005122a-c12f-3cd8-9ccf-6d2a5af48dfa.name	{{jira.ip}} JIRA	7
+bitbucket.global.settings	applinks.admin.6005122a-c12f-3cd8-9ccf-6d2a5af48dfa.name	Polytech JIRA	7
 bitbucket.global.settings	applinks.admin.6005122a-c12f-3cd8-9ccf-6d2a5af48dfa.display.url	{{jira.baseUrl}}/{{jira.subdirectory}}	8
 bitbucket.global.settings	applinks.admin.6005122a-c12f-3cd8-9ccf-6d2a5af48dfa.rpc.url	{{jira.baseUrl}}/{{jira.subdirectory}}	9
 bitbucket.global.settings	applinks.global.application.ids	#java.util.List\n6005122a-c12f-3cd8-9ccf-6d2a5af48dfa	10
