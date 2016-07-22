@@ -13,6 +13,7 @@ class Generator:
 		copy_tree(base,dest)
 
 		conf = copy.deepcopy(config)
+
 		env = Environment(loader=FileSystemLoader(dest+'template'))
 		template = env.get_template('Dockerfile')
 		if('bitbucket' in  conf['linked-config']):
@@ -23,14 +24,16 @@ class Generator:
 			conf['config']['jira']['license'] = conf['config']['jira']['license'].replace('\n','\\')
 		if('crowd' in conf['linked-config']):
 			conf['config']['crowd'] = conf['linked-config']['crowd']
-
+		print('+++++++++++++++++++++++++++++++++++++++')
+		print(conf['config'])
+		print('++++++++++++++++++++++++++++++++++++++++')
 
 		conf['config']['nginx'] = conf['linked-config']['nginx']
-		out = template.render(config['config'])
+		out = template.render(conf['config'])
 		with open(dest+"Dockerfile", "w") as fh:
 			fh.write(out)
 		template = env.get_template('init-user-db.sh')
-		out = template.render(config['config'])
+		out = template.render(conf['config'])
 		with open(dest+"init-user-db.sh", "w") as fh:
 			fh.write(out)
 		if('bitbucket' in conf['linked-config']):
