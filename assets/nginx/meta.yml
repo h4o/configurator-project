@@ -10,6 +10,9 @@ crowd:
     subdirectory:
     type: 'string'
     from: 'input'
+jira:
+    subdirectory:
+    type: 'string'
 meta:
     port: 80
 
