@@ -1,6 +1,6 @@
 from distutils.dir_util import copy_tree
 from jinja2 import Environment, FileSystemLoader,Template
-
+import copy
 
 class Generator:
 	def __init__(self):
@@ -11,7 +11,8 @@ class Generator:
 	def generate(self,config,base,dest):
 		print("we generate our files !")
 		copy_tree(base,dest)
-		conf = dict(config)
+		
+		conf = copy.deepcopy(config)
 		env = Environment(loader=FileSystemLoader(dest+'template'))
 		template = env.get_template('Dockerfile')
 		if('bitbucket' in  conf['linked-config']):
@@ -22,6 +23,8 @@ class Generator:
 			conf['config']['jira']['license'] = conf['config']['jira']['license'].replace('\n','\\')
 		if('crowd' in conf['linked-config']):
 			conf['config']['crowd'] = conf['linked-config']['crowd']
+
+
 		conf['config']['nginx'] = conf['linked-config']['nginx']
 		out = template.render(config['config'])
 		with open(dest+"Dockerfile", "w") as fh:
