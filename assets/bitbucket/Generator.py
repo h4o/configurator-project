@@ -12,7 +12,7 @@ class Generator:
 		print("we generate our files !")
 		copy_tree(base,dest)
 
-		final_config = {**copy.deepcopy(config['config']),**copy.deepcopy(config['linked-config'])}
+		final_config = {**config['config'],**config['linked-config']}
 		final_config['license'] = final_config['license'].replace('\n',' \\\n')
 		env = Environment(loader=FileSystemLoader(dest+'template'))
 		template = env.get_template('bitbucket.properties')

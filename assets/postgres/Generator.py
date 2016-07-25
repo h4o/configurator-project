@@ -12,43 +12,42 @@ class Generator:
 		print("we generate our files !")
 		copy_tree(base,dest)
 
-		conf = copy.deepcopy(config)
 
 		env = Environment(loader=FileSystemLoader(dest+'template'))
 		template = env.get_template('Dockerfile')
-		if('bitbucket' in  conf['linked-config']):
-			conf['config']['bitbucket'] = conf['linked-config']['bitbucket']
-			conf['config']['bitbucket']['license'] = conf['config']['bitbucket']['license'].replace('\n','\\')
-		if('jira' in  conf['linked-config']):
-			conf['config']['jira'] = conf['linked-config']['jira']
-			conf['config']['jira']['license'] = conf['config']['jira']['license'].replace('\n','\\')
-		if('crowd' in conf['linked-config']):
-			conf['config']['crowd'] = conf['linked-config']['crowd']
+		if('bitbucket' in  config['linked-config']):
+			config['config']['bitbucket'] = config['linked-config']['bitbucket']
+			config['config']['bitbucket']['license'] = config['config']['bitbucket']['license'].replace('\n','\\')
+		if('jira' in  config['linked-config']):
+			config['config']['jira'] = config['linked-config']['jira']
+			config['config']['jira']['license'] = config['config']['jira']['license'].replace('\n','\\')
+		if('crowd' in config['linked-config']):
+			config['config']['crowd'] = config['linked-config']['crowd']
 		print('+++++++++++++++++++++++++++++++++++++++')
-		print(conf['config'])
+		print(config['config'])
 		print('++++++++++++++++++++++++++++++++++++++++')
 
-		conf['config']['nginx'] = conf['linked-config']['nginx']
-		out = template.render(conf['config'])
+		config['config']['nginx'] = config['linked-config']['nginx']
+		out = template.render(config['config'])
 		with open(dest+"Dockerfile", "w") as fh:
 			fh.write(out)
 		template = env.get_template('init-user-db.sh')
-		out = template.render(conf['config'])
+		out = template.render(config['config'])
 		with open(dest+"init-user-db.sh", "w") as fh:
 			fh.write(out)
-		if('bitbucket' in conf['linked-config']):
+		if('bitbucket' in config['linked-config']):
 			template = env.get_template('bitbucket.sql')
-			out = template.render(conf['config'])
+			out = template.render(config['config'])
 			with open(dest+"bitbucket.sql", "w") as fh:
 				fh.write(out)
-		if('crowd' in conf['linked-config']):
+		if('crowd' in config['linked-config']):
 			template = env.get_template('crowd.sql')
-			out = template.render(conf['config'])
+			out = template.render(config['config'])
 			with open(dest+"crowd.sql", "w") as fh:
 				fh.write(out)
-		if('jira' in conf['linked-config']):
+		if('jira' in config['linked-config']):
 			template = env.get_template('jira.sql')
-			out = template.render(conf['config'])
+			out = template.render(config['config'])
 			with open(dest+"jira.sql", "w") as fh:
 				fh.write(out)
 

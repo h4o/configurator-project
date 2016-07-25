@@ -6,6 +6,7 @@ from MetaLoader import MetaLoader
 from pydoc import locate
 from jinja2 import Environment, FileSystemLoader,Template
 import yaml
+import copy
 
 
 
@@ -89,7 +90,7 @@ def callGenerators(imageList,config):
 
 		g = locate('assets.'+image+'.Generator')
 		gen = g.Generator()
-		gen.generate(data,'assets/'+image+'/','output/'+image+'/')
+		gen.generate(copy.deepcopy(data),'assets/'+image+'/','output/'+image+'/')
 
 def generateComposition(imageList,config):
 	imageNameList = list(imageList.keys())
