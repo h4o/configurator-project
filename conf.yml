@@ -4,6 +4,7 @@ crowd:
     license: 'crowd.license'
     serverId: 'BFV6-7P8Y-30RK-Y1XO'
     subdirectory: 'crowd'
+    certificate: 'tomcat.cert'
 postgres:
     postgresUser: 'noopoe'
     postgresPassword: 'nope'

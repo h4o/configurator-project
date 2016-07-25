@@ -53,7 +53,10 @@ def askForConfig(imageList,configFile):
 				config[el][quest] = input(quest + "?")
 			
 			if 'from' in configInfo[el][quest] and configInfo[el][quest]['from'] == 'filesystem':
-				with open(config[el][quest], 'r') as content_file:
+				readType = 'r'
+				if configInfo[el][quest]['type'] == 'binary':
+					readType = 'rb'
+				with open(config[el][quest], readType) as content_file:
 					config[el][quest] = content_file.read()
 
 
