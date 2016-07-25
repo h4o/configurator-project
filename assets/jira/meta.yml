@@ -3,7 +3,7 @@ meta:
   ports:
     - 8080
   volumes:
-    - data: /var/atlassian/application-data/jira/shared/
+    - data:/var/atlassian/application-data/jira/shared/
 required:
   license:
     type: 'string'
