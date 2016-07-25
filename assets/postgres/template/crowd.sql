@@ -615,10 +615,10 @@ COPY cwd_group_attribute (id, group_id, directory_id, attribute_name, attribute_
 --
 
 COPY cwd_membership (id, parent_id, child_id, membership_type, group_type, parent_name, lower_parent_name, child_name, lower_child_name, directory_id) FROM stdin;
-163841	131073	65537	GROUP_USER	GROUP	crowd-administrators	crowd-administrators	mosser	mosser	32769
-163842	131074	65537	GROUP_USER	GROUP	jira-administrators	jira-administrators	mosser	mosser	32769
-163843	131075	65537	GROUP_USER	GROUP	jira-developers	jira-developers	mosser	mosser	32769
-163844	131076	65537	GROUP_USER	GROUP	jira-users	jira-users	mosser	mosser	32769
+163841	131073	65537	GROUP_USER	GROUP	crowd-administrators	crowd-administrators	{{crowd.username}}	{{crowd.username}}	32769
+163842	131074	65537	GROUP_USER	GROUP	jira-administrators	jira-administrators	{{crowd.username}}	{{crowd.username}}	32769
+163843	131075	65537	GROUP_USER	GROUP	jira-developers	jira-developers	{{crowd.username}}	{{crowd.username}}	32769
+163844	131076	65537	GROUP_USER	GROUP	jira-users	jira-users	{{crowd.username}}	{{crowd.username}}	32769
 \.
 
 
@@ -651,9 +651,9 @@ crowd	build.number	665
 
 COPY cwd_token (id, directory_id, entity_name, random_number, identifier_hash, random_hash, created_date, last_accessed_date, last_accessed_time, duration) FROM stdin;
 294913	-1	crowd	8842999515710312731	u489Iq0t0xJ3DKsvkNdMcQ00	tZ6b7jIMA6xBBOW0VQFBYA00	2016-07-07 08:39:42.326	2016-07-07 08:39:42.326	1467880782326	\N
-294915	32769	mosser	4130975346835697029	as0UUhn0v37l0gs0HnvGCQ00	IMffWizE6ev252Jnsqk2XA00	2016-07-07 08:39:52.25	2016-07-07 08:39:52.25	1467880934097	\N
+294915	32769	{{crowd.username}}	4130975346835697029	as0UUhn0v37l0gs0HnvGCQ00	IMffWizE6ev252Jnsqk2XA00	2016-07-07 08:39:52.25	2016-07-07 08:39:52.25	1467880934097	\N
 327684	-1	jira	8304706563784067373	hVtW5FElx8qNjHjM06Kw8A00	CskrP0rfac0oCOPb3libpA00	2016-07-11 15:21:36.761	2016-07-11 15:21:36.761	1468250561107	60
-327682	32769	mosser	7330111551665492272	FBPJni260Jnrw0hG54aRVA00	r3XxJer9ord1FJmoMpSpCw00	2016-07-11 15:11:34.035	2016-07-11 15:11:34.035	1468251162193	\N
+327682	32769	{{crowd.username}}	7330111551665492272	FBPJni260Jnrw0hG54aRVA00	r3XxJer9ord1FJmoMpSpCw00	2016-07-11 15:11:34.035	2016-07-11 15:11:34.035	1468251162193	\N
 327681	-1	crowd	6909933844937244689	HynTzREIXxOhhDEp3DsKxg00	ysEp6n0UQND7PzfiCbGjHg00	2016-07-11 15:11:16.696	2016-07-11 15:11:16.696	1468251162269	\N
 327683	-1	bitbucket	9067145202391027781	mW0xk2ARhvoQWPw4dc6mSQ00	0BF2yPJNOVbq5fIcE0Jzmg00	2016-07-11 15:13:03.36	2016-07-11 15:13:03.36	1468250000401	60
 \.
@@ -664,9 +664,8 @@ COPY cwd_token (id, directory_id, entity_name, random_number, identifier_hash, r
 --
 
 COPY cwd_user (id, user_name, lower_user_name, active, created_date, updated_date, first_name, lower_first_name, last_name, lower_last_name, display_name, lower_display_name, email_address, lower_email_address, external_id, directory_id, credential) FROM stdin;
-65537	mosser	mosser	T	2016-07-07 08:39:37.794	2016-07-07 08:39:37.794	Sebastien	sebastien	Mosser	mosser	Sebastien Mosser	sebastien mosser	mosser@polytech.unice.fr	mosser@polytech.unice.fr	3758d6eb-3142-4912-a10f-7ee680464c0a	32769	{PKCS5S2}V4Bd7HI5cEfi8yjSJpRCic0vOa+Fb0hpkgLStm/i15C0AxU0CxiuIFwhRgqfu8qH
+65537	{{crowd.username}}	{{crowd.l_username}}	T	2016-07-07 08:39:37.794	2016-07-07 08:39:37.794	{{crowd.first_name}}	{{crowd.l_first_name}}	{{crowd.last_name}}	{{crowd.l_last_name}}	{{crowd.last_name}} {{crowd.first_name}}	{{crowd.last_name}} {{crowd.first_name}}	{{crowd.mail}}	{{crowd.mail}}	3758d6eb-3142-4912-a10f-7ee680464c0a	32769	{{crowd.password}}
 \.
-
 
 --
 -- Data for Name: cwd_user_attribute; Type: TABLE DATA; Schema: public; Owner: postgres

@@ -17,6 +17,16 @@ required:
   subdirectory:
     type: 'string'
     from: 'input'
+  password:
+    type: 'string'
+  username:
+    type: 'string'
+  first_name:
+    type: 'string'
+  last_name:
+    type: 'string'
+  mail:
+    type: 'string'
   images:
     - postgres
     - nginx

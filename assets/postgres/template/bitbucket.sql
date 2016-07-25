@@ -3767,11 +3767,11 @@ COPY cwd_group_attribute (id, group_id, directory_id, attribute_name, attribute_
 -- ????????
 
 COPY cwd_membership (id, parent_id, child_id, membership_type, group_type, parent_name, lower_parent_name, child_name, lower_child_name, directory_id) FROM stdin;
-196609	98305	131073	GROUP_USER	GROUP	stash-users	stash-users	username	username	32769
-{% if crowd %}196610	98309	131074	GROUP_USER	GROUP	crowd-administrators	crowd-administrators	mosser	mosser	32770
-196611	98308	131074	GROUP_USER	GROUP	jira-administrators	jira-administrators	mosser	mosser	32770
-196612	98306	131074	GROUP_USER	GROUP	jira-developers	jira-developers	mosser	mosser	32770
-196613	98307	131074	GROUP_USER	GROUP	jira-users	jira-users	mosser	mosser	32770
+196609	98305	131073	GROUP_USER	GROUP	stash-users	stash-users	{{bitbucket.username}}	{{bitbucket.l_username}}	32769
+{% if crowd %}196610	98309	131074	GROUP_USER	GROUP	crowd-administrators	crowd-administrators	{{crowd.username}}	{{crowd.username}}	32770
+196611	98308	131074	GROUP_USER	GROUP	jira-administrators	jira-administrators	{{crowd.username}}	{{crowd.username}}	32770
+196612	98306	131074	GROUP_USER	GROUP	jira-developers	jira-developers	{{crowd.username}}	{{crowd.username}}	32770
+196613	98307	131074	GROUP_USER	GROUP	jira-users	jira-users	{{crowd.username}}	{{crowd.username}}	32770
 {% endif %}\.
 
 
@@ -3788,8 +3788,8 @@ COPY cwd_property (property_key, property_name, property_value) FROM stdin;
 --
 
 COPY cwd_user (id, user_name, lower_user_name, created_date, updated_date, first_name, lower_first_name, last_name, lower_last_name, display_name, lower_display_name, email_address, lower_email_address, directory_id, credential, is_active, external_id) FROM stdin;
-131073	username	username	2016-07-11 15:02:33.498+00	2016-07-11 15:02:33.498+00	username	username	username	username	Sebby	sebby	test@test.fr	test@test.fr	32769	{PKCS5S2}Jik4sYHBMQZnucP0DX7nW+eZS+2Occ+7yaCZWVKPlCvKXpgf9tc5npekksKZTEtf	T	5314b988-b5a4-4a14-a7ee-858440aea0a4
-{%if crowd%}131074	mosser	mosser	2016-07-11 15:13:19.131+00	2016-07-11 15:13:19.131+00	Sebastien	sebastien	Mosser	mosser	Sebastien Mosser	sebastien mosser	mosser@polytech.unice.fr	mosser@polytech.unice.fr	32770	nopass	T	32769:3758d6eb-3142-4912-a10f-7ee680464c0a
+131073	{{bitbucket.username}}	{{bitbucket.l_username}}	2016-07-11 15:02:33.498+00	2016-07-11 15:02:33.498+00	{{bitbucket.first_name}}	{{bitbucket.l_first_name}}	{{bitbucket.l_last_name}}	{{bitbucket.l_last_name}}	{{bitbucket.first_name}} {{bitbucket.last_name}}	{{bitbucket.l_first_name}} {{bitbucket.l_last_name}}	{{bitbucket.mail}}	{{bitbucket.mail}}	32769	{{bitbucket.password}}	T	5314b988-b5a4-4a14-a7ee-858440aea0a4
+{%if crowd%}131074	{{crowd.username}}	{{crowd.l_username}}	2016-07-11 15:13:19.131+00	2016-07-11 15:13:19.131+00	{{crowd.first_name}}	{{crowd.l_first_name}}	{{crowd.last_name}}	{{crowd.l_last_name}}	{{crowd.last_name}} {{crowd.first_name}}	{{crowd.l_last_name}} {{crowd.l_first_name}}	{{crowd.mail}}	{{crowd.mail}}	32770	nopass	T	32769:3758d6eb-3142-4912-a10f-7ee680464c0a
 {% endif %}\.
 
 
@@ -4531,8 +4531,8 @@ COPY sta_normal_project (project_id, is_public) FROM stdin;
 --
 
 COPY sta_normal_user (user_id, name, slug, locale, deleted_timestamp, time_zone) FROM stdin;
-1	username	username	\N	\N	\N
-2	mosser	mosser	\N	\N	\N
+1	{{bitbucket.username}}	{{bitbucket.username}}	\N	\N	\N
+2	{{crowd.username}}	{{crowd.username}}	\N	\N	\N
 \.
 
 

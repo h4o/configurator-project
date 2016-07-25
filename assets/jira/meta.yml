@@ -16,6 +16,12 @@ required:
     from: 'input'
   serverId:
     type: 'string'
+  first_name:
+    type: 'string'
+  last_name:
+    type: 'string'
+  password:
+    type: 'string'
   images:
     - postgres
     - nginx

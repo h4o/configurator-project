@@ -13,7 +13,7 @@ class Generator:
 		copy_tree(base,dest)
 
 		final_config = {**dict(config['config']),**dict(config['linked-config'])}
-		final_config['license'] = final_config['license'].replace('\n',' \\\n')
+		final_config['license'] = final_config['license'].replace('\n',' \\\n') 
 		env = Environment(loader=FileSystemLoader(dest+'template'))
 		template = env.get_template('dbconfig.xml')
 		out = template.render(final_config)
