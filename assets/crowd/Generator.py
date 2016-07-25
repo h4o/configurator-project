@@ -22,8 +22,7 @@ class Generator:
 		out = template.render(config['config'])
 		with open(dest+"crowd.cfg.xml", "w") as fh:
 			fh.write(out)
-		with open(dest+"tomcat.cert",'wb') as fh:
-			fh.write(conf['config']['certificate'])
+
 
 
 

@@ -14,9 +14,6 @@ required:
   subdirectory:
     type: 'string'
     from: 'input'
-  certificate:
-    type: 'binary'
-    from: 'filesystem'
   images:
     - postgres
     - nginx

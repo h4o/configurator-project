@@ -8,8 +8,8 @@ class Generator:
 
 
 	def generate(self,config,base,dest):
-		print(config['linked-config'])
-		print(config['imageList'])
+		print('our current config:')
+		print(config['config'])
 		print("we generate our files !")
 
 		copy_tree(base,dest)
@@ -25,7 +25,10 @@ class Generator:
 		out = template.render({'images':images})
 		with open(dest+"default.conf", "w") as fh:
 			fh.write(out)
-
+		with open(dest+"cert.crt",'wb') as fh:
+			fh.write(config['config']['certificate'])
+		with open(dest+"key.key",'wb') as fh:
+			fh.write(config['config']['key'])
 
 
 

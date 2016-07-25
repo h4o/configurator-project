@@ -4,7 +4,6 @@ crowd:
     license: 'crowd.license'
     serverId: 'BFV6-7P8Y-30RK-Y1XO'
     subdirectory: 'crowd'
-    certificate: 'tomcat.cert'
 postgres:
     postgresUser: 'noopoe'
     postgresPassword: 'nope'
@@ -22,4 +21,8 @@ jira:
   license: 'jira.license'
   subdirectory: 'jira'
   serverId: 'B8TN-HTUL-7W5A-Y7E5'
+
+nginx:
+  certificate: 'localhost.cert'
+  key: 'localhost.key'
   

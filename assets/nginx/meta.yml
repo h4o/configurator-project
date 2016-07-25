@@ -1,6 +1,11 @@
 version: '1.0-SNAPSHOT'
 required:
-
+  certificate:
+    type: 'binary'
+    from: 'filesystem'
+  key:
+    type: 'binary'
+    from: 'filesystem'
 
 bitbucket:
     subdirectory:
@@ -14,7 +19,7 @@ jira:
     subdirectory:
     type: 'string'
 meta:
-    port: 80
+    port: 443
 
 
   
