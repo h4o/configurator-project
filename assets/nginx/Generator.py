@@ -16,7 +16,7 @@ class Generator:
 		images = []
 		for imageName in config['linked-config']:
 			image = config['linked-config'][imageName]
-			image['port']=config['imageList'][imageName]['port']
+			image['ports']=config['imageList'][imageName]['ports']
 			image['url']='http://localhost'
 			images.append(image)
 

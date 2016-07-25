@@ -1,6 +1,7 @@
 version: '1.0-SNAPSHOT'
 meta:
-  port: 7990
+  ports:
+    - 7990
   volumes:
     -  data:/var/atlassian/application-data/bitbucket/shared/
 required:

@@ -19,7 +19,9 @@ jira:
     subdirectory:
     type: 'string'
 meta:
-    port: 443
+    ports:
+        - 443
+        - 80
 
 
   

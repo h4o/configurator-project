@@ -1,6 +1,7 @@
 version: '1.0-SNAPSHOT'
 meta:
-  port: 8080
+  ports:
+     8080
 required:
   license:
     type: 'string'

@@ -1,6 +1,7 @@
 version: '1.0-SNAPSHOT'
 meta:
-  port: 8095
+  ports:
+    - 8095
 required:
   license:
     type: 'string'

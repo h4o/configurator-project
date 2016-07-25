@@ -1,6 +1,7 @@
 version: '1.0-SNAPSHOT'
 meta:
-  port: 5432
+  ports:
+      - 5432
 
 required:
   files:

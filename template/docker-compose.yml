@@ -5,7 +5,9 @@ services:
     image: {{ image.name }}
     build: .{{ basedir }}/{{ image.name }}/
     ports:
-      - "{{ image.port }}:{{ image.port }}"
+      {% for port in image.ports %}
+      - "{{ port }}:{{ port }}"
+      {% endfor %}
     networks:
       net:
         ipv4_address: {{image.ip}}
