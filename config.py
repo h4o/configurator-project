@@ -114,7 +114,7 @@ def generateComposition(imageList,config):
 	with open("output/docker-compose.yml", "w") as fh:
 		fh.write(out)
 	template = env.get_template('up.sh')
-	out = template.render({'images':imageNameList})
+	out = template.render({'images':imageMeta})
 	with open("output/up.sh", "w") as fh:
 		fh.write(out)
 	

@@ -4,6 +4,8 @@ crowd:
     license: 'crowd.license'
     serverId: 'BFV6-7P8Y-30RK-Y1XO'
     subdirectory: 'crowd'
+    password: 'mdpfdp'
+    username: 'crowd'
 postgres:
     postgresUser: 'noopoe'
     postgresPassword: 'nope'
@@ -20,6 +22,8 @@ jira:
   baseUrl: 'http://134.59.130.155'
   license: 'jira.license'
   subdirectory: 'jira'
+  username: 'test'
+  password: 'retest'
   serverId: 'B8TN-HTUL-7W5A-Y7E5'
 
 nginx:
