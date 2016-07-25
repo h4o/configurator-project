@@ -4531,9 +4531,9 @@ COPY sta_normal_project (project_id, is_public) FROM stdin;
 --
 
 COPY sta_normal_user (user_id, name, slug, locale, deleted_timestamp, time_zone) FROM stdin;
-1	{{bitbucket.username}}	{{bitbucket.username}}	\N	\N	\N
+1	{{bitbucket.username}}	{{bitbucket.username}}	\N	\N	\N{% if crowd%}
 2	{{crowd.username}}	{{crowd.username}}	\N	\N	\N
-\.
+{% endif %}\.
 
 
 --
