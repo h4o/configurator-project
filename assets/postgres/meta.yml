@@ -2,7 +2,8 @@ version: '1.0-SNAPSHOT'
 meta:
   ports:
       - 5432
-
+  volumes:
+      - data:/var/lib/postgresql/data
 required:
   files:
       - bitbucket.properties:/var/atlassian/application-data/bitbucket/shared

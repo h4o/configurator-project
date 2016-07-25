@@ -11,12 +11,12 @@ services:
     networks:
       net:
         ipv4_address: {{image.ip}}
-    {#{% if image.volumes %}
+    {% if image.volumes %}
     volumes:
       {% for volume in image.volumes %}
-      - /Users/data/{{ image.name }}/{{ volume.name }}:{{ volume.dir }}:Z
+      - /etc/data/{{ image.name }}/{{ volume.name }}:{{ volume.dir }}:Z
       {% endfor %}
-    {% endif %}#}
+    {% endif %}
   {% endfor %}
 networks:
   net:

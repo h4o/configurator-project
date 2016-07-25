@@ -2,6 +2,8 @@ version: '1.0-SNAPSHOT'
 meta:
   ports:
     - 8095
+  volumes:
+    - logs:/var/crowd-home/logs
 required:
   license:
     type: 'string'
