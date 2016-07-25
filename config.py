@@ -57,8 +57,14 @@ def askForConfig(imageList,configFile):
 				readType = 'r'
 				if configInfo[el][quest]['type'] == 'binary':
 					readType = 'rb'
-				with open(config[el][quest], readType) as content_file:
-					config[el][quest] = content_file.read()
+				try:
+					with open(config[el][quest], readType) as content_file:
+						config[el][quest] = content_file.read()
+				except Exception as E:
+					if(configInfo[el][quest]['necessary']):
+						raise E
+					else:
+						pass
 
 
 

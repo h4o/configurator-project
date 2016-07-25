@@ -25,10 +25,15 @@ class Generator:
 		out = template.render({'images':images})
 		with open(dest+"default.conf", "w") as fh:
 			fh.write(out)
-		with open(dest+"cert.crt",'wb') as fh:
-			fh.write(config['config']['certificate'])
-		with open(dest+"key.key",'wb') as fh:
-			fh.write(config['config']['key'])
+		template = env.get_template('Dockerfile')
+		out = template.render(config['config'])
+		with open(dest+"Dockerfile", "w") as fh:
+			fh.write(out)
+		if(config['config']['ssl']):
+			with open(dest+"cert.crt",'wb') as fh:
+				fh.write(config['config']['certificate'])
+			with open(dest+"key.key",'wb') as fh:
+				fh.write(config['config']['key'])
 
 
 

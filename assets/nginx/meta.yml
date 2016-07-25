@@ -1,11 +1,15 @@
 version: '1.0-SNAPSHOT'
 required:
+  ssl:
+    type: 'boolean'
   certificate:
     type: 'binary'
     from: 'filesystem'
+    necessary: false
   key:
     type: 'binary'
     from: 'filesystem'
+    necessary: false
 
 bitbucket:
     subdirectory:

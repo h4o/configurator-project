@@ -25,4 +25,5 @@ jira:
 nginx:
   certificate: 'tomcat.cert'
   key: 'server.key'
+  ssl: false
   
