@@ -23,6 +23,6 @@ jira:
   serverId: 'B8TN-HTUL-7W5A-Y7E5'
 
 nginx:
-  certificate: 'localhost.cert'
-  key: 'localhost.key'
+  certificate: 'tomcat.cert'
+  key: 'server.key'
   
