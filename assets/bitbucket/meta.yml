@@ -26,6 +26,12 @@ required:
     type: 'string'
   password:
     type: 'string'
+  first_name:
+    type: 'string'
+  last_name:
+    type: 'string'
+  mail:
+    type: 'string'
   serverId:
     type: 'string'
   images:
