@@ -3,7 +3,8 @@ meta:
   ports:
     - 8080
   volumes:
-    - data:/var/atlassian/application-data/jira/shared/
+    - data:/var/atlassian/application-data/jira/shared
+    - logs:/var/atlassian/application-data/jira/log
 required:
   license:
     type: 'string'
@@ -21,6 +22,10 @@ required:
   last_name:
     type: 'string'
   password:
+    type: 'string'
+  username:
+    type: 'string'
+  mail:
     type: 'string'
   images:
     - postgres

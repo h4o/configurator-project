@@ -28,6 +28,7 @@ class Generator:
 			config['config']['jira']['license'] = config['config']['jira']['license'].replace('\n','\\')
 			config['config']['jira']['l_first_name'] = config['config']['jira']['first_name'].lower()
 			config['config']['jira']['l_last_name'] = config['config']['jira']['last_name'].lower()
+			config['config']['jira']['l_username'] = config['config']['jira']['username'].lower()
 			config['config']['jira']['password'] = passlib.hash.atlassian_pbkdf2_sha1.encrypt(config['config']['jira']['password'])
 		if('crowd' in config['linked-config']):
 			config['config']['crowd'] = config['linked-config']['crowd']
