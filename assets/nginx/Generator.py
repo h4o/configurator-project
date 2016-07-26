@@ -22,7 +22,7 @@ class Generator:
 
 		env = Environment(loader=FileSystemLoader(dest+'template'))
 		template = env.get_template('default.conf')
-		out = template.render({'images':images})
+		out = template.render({'images':images,'ssl':config['config']['ssl']})
 		with open(dest+"default.conf", "w") as fh:
 			fh.write(out)
 		template = env.get_template('Dockerfile')
