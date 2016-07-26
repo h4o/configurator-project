@@ -3502,7 +3502,7 @@ SELECT pg_catalog.setval('"AO_FB71B4_SSH_PUBLIC_KEY_ENTITY_ID_seq"', 1, false);
 COPY app_property (prop_key, prop_value) FROM stdin;
 instance.application.mode	default
 license	{{bitbucket.license}}
-server.id	BHXZ-7DZC-MKVG-YG2F
+server.id	{{ bitbucket.serverId }}
 instance.home	/var/atlassian/application-data/bitbucket/shared
 instance.name	{{bitbucket.name}}
 instance.url	{{bitbucket.baseUrl}}/{{bitbucket.directory}}
@@ -3619,15 +3619,15 @@ COPY cwd_app_dir_group_mapping (id, app_dir_mapping_id, application_id, director
 --
 
 COPY cwd_app_dir_mapping (id, application_id, directory_id, list_index, is_allow_all) FROM stdin;
-65537	1	32769	0	T
-{%if crowd %}65538	1	32770	1	T
+{%if crowd %}65537	1	32769	0	T
+65538	1	32770	1	T
 {% endif %}\.
 
 
 --
 -- Data for Name: cwd_app_dir_operation; Type: TABLE DATA; Schema: public; Owner: postgres
 --
-
+{% if crowd %}
 COPY cwd_app_dir_operation (app_dir_mapping_id, operation_type) FROM stdin;
 65537	DELETE_GROUP
 65537	UPDATE_ROLE_ATTRIBUTE
@@ -3641,7 +3641,7 @@ COPY cwd_app_dir_operation (app_dir_mapping_id, operation_type) FROM stdin;
 65537	UPDATE_USER_ATTRIBUTE
 65537	CREATE_GROUP
 65537	UPDATE_GROUP
-{% if crowd %}65538	DELETE_GROUP
+65538	DELETE_GROUP
 65538	UPDATE_ROLE_ATTRIBUTE
 65538	UPDATE_ROLE
 65538	CREATE_USER
@@ -3652,17 +3652,17 @@ COPY cwd_app_dir_operation (app_dir_mapping_id, operation_type) FROM stdin;
 65538	DELETE_USER
 65538	UPDATE_USER_ATTRIBUTE
 65538	CREATE_GROUP
-65538	UPDATE_GROUP{% endif %}
+65538	UPDATE_GROUP
 \.
-
+{% endif %}
 
 --
 -- Data for Name: cwd_application; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY cwd_application (id, application_name, lower_application_name, created_date, updated_date, description, application_type, credential, is_active) FROM stdin;
-{% if crowd %}1	crowd-embedded	crowd-embedded	2016-07-11 15:02:30.259+00	2016-07-11 15:13:12.799+00	\N	CROWD	{PKCS5S2}eMkkEl8ED99b2p0a6EBBU8Et6E0+Y5LweRgoIvA60xnBlGP5rvljBNpjol2Cl2nX	T{% endif %}
-\.
+{% if crowd %}1	crowd-embedded	crowd-embedded	2016-07-11 15:02:30.259+00	2016-07-11 15:13:12.799+00	\N	CROWD	{PKCS5S2}eMkkEl8ED99b2p0a6EBBU8Et6E0+Y5LweRgoIvA60xnBlGP5rvljBNpjol2Cl2nX	T
+{% endif %}\.
 
 
 --
@@ -3746,12 +3746,12 @@ COPY cwd_directory_operation (directory_id, operation_type) FROM stdin;
 --
 
 COPY cwd_group (id, group_name, lower_group_name, created_date, updated_date, description, group_type, directory_id, is_active, is_local) FROM stdin;
-98305	stash-users	stash-users	2016-07-11 15:02:31.8+00	2016-07-11 15:02:31.8+00	\N	GROUP	32769	T	F
-{% if crowd %}98306	jira-developers	jira-developers	2016-07-11 15:13:19.654+00	2016-07-11 15:13:19.654+00		GROUP	32770	T	F
+98305	stash-users	stash-users	2016-07-11 15:02:31.8+00	2016-07-11 15:02:31.8+00	\N	GROUP	32769	T	F{% if crowd %}
+98306	jira-developers	jira-developers	2016-07-11 15:13:19.654+00	2016-07-11 15:13:19.654+00		GROUP	32770	T	F
 98307	jira-users	jira-users	2016-07-11 15:13:19.658+00	2016-07-11 15:13:19.658+00		GROUP	32770	T	F
 98308	jira-administrators	jira-administrators	2016-07-11 15:13:19.658+00	2016-07-11 15:13:19.658+00		GROUP	32770	T	F
-98309	crowd-administrators	crowd-administrators	2016-07-11 15:13:19.658+00	2016-07-11 15:13:19.658+00	\N	GROUP	32770	T	F{% endif %}
-\.
+98309	crowd-administrators	crowd-administrators	2016-07-11 15:13:19.658+00	2016-07-11 15:13:19.658+00	\N	GROUP	32770	T	F
+{% endif %}\.
 
 
 --
@@ -3813,11 +3813,6 @@ COPY cwd_user_attribute (id, user_id, directory_id, attribute_name, attribute_va
 
 COPY cwd_user_credential_record (id, user_id, password_hash, list_index) FROM stdin;
 \.
-
-
---
--- Data for Name: databasechangelog; Type: TABLE DATA; Schema: public; Owner: postgres
---
 
 COPY databasechangelog (id, author, filename, dateexecuted, orderexecuted, exectype, md5sum, description, comments, tag, liquibase) FROM stdin;
 STASHDEV-7910-1	jhinch	liquibase/r3_4/bootstrap-upgrade.xml	2016-07-11 15:00:25.056639+00	1	EXECUTED	3:4ae450c8e1912bae3bcad0a35694e8f4	Create Table	Create the 'app_property' table, only if it hasn't already been created	\N	2.0.5
@@ -4299,6 +4294,7 @@ BSERVDEV-12323-5	jpalacios	liquibase/r4_7/upgrade.xml	2016-07-11 15:01:30.878673
 \.
 
 
+
 --
 -- Data for Name: databasechangeloglock; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -4340,8 +4336,8 @@ bitbucket.global.settings	com.atlassian.bitbucket.server.bitbucket-git-lfs.token
 bitbucket.global.settings	AO_6978BB_#	1	2
 bitbucket.global.settings	AO_616D7B_#	1	3
 bitbucket.global.settings	AO_FB71B4_#	3	4
-bitbucket.global.settings	AO_02A6C0_#	1	5
-{% if jira %}bitbucket.global.settings	applinks.admin.6005122a-c12f-3cd8-9ccf-6d2a5af48dfa.type	jira	6
+bitbucket.global.settings	AO_02A6C0_#	1	5{% if jira %}
+bitbucket.global.settings	applinks.admin.6005122a-c12f-3cd8-9ccf-6d2a5af48dfa.type	jira	6
 bitbucket.global.settings	applinks.admin.6005122a-c12f-3cd8-9ccf-6d2a5af48dfa.name	Polytech JIRA	7
 bitbucket.global.settings	applinks.admin.6005122a-c12f-3cd8-9ccf-6d2a5af48dfa.display.url	{{jira.baseUrl}}/{{jira.subdirectory}}	8
 bitbucket.global.settings	applinks.admin.6005122a-c12f-3cd8-9ccf-6d2a5af48dfa.rpc.url	{{jira.baseUrl}}/{{jira.subdirectory}}	9
@@ -4358,7 +4354,7 @@ bitbucket.global.settings	applinks.admin.6005122a-c12f-3cd8-9ccf-6d2a5af48dfa.pr
 bitbucket.global.settings	com.atlassian.analytics.client.configuration..analytics_enabled	true	20
 bitbucket.global.settings	com.atlassian.analytics.client.configuration..policy_acknowledged	true	21
 bitbucket.global.settings	com.atlassian.analytics.client.configuration.uuid	d5f2978e-8cb8-41cd-8d31-51a587353fb3	22
-bitbucket.global.settings	com.atlassian.analytics.client.configuration.serverid	{{ bitbucket.serverId }}
+bitbucket.global.settings	com.atlassian.analytics.client.configuration.serverid	{{ bitbucket.serverId }}	23
 bitbucket.global.settings	com.atlassian.bitbucket.server.bitbucket-git:build	7	24
 bitbucket.global.settings	com.atlassian.upm:notifications:notification-plugin.request	#java.util.List\n	26
 bitbucket.global.settings	com.atlassian.upm:notifications:notification-edition.mismatch	#java.util.List\n	27
