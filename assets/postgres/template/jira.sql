@@ -6882,9 +6882,9 @@ SELECT pg_catalog.setval('"AO_E8B6CC_SYNC_EVENT_ID_seq"', 1, false);
 --
 
 COPY app_user (id, user_key, lower_user_name) FROM stdin;
-10000	{{jira.username}} {{jira.l_username}}
+10000	{{jira.username}}	{{jira.l_username}}{% if crowd %}
 10100	{{crowd.username}}    {{crowd.l_username}}
-\.
+{% endif %}\.
 
 
 --
@@ -6962,12 +6962,12 @@ COPY audit_changed_value (id, log_id, name, delta_from, delta_to) FROM stdin;
 
 COPY audit_item (id, log_id, object_type, object_id, object_name, object_parent_id, object_parent_name) FROM stdin;
 10000	10007	USER	{{jira.username}}  {{jira.l_username}}	1	JIRA Internal Directory
-10001	10012	USER	{{jira.username}}  {{jira.l_username}}	1	JIRA Internal Directory
+10001	10012	USER	{{jira.username}}  {{jira.l_username}}	1	JIRA Internal Directory{% if crowd %}
 10100	10105	USER	{{crowd.username}} {{crowd.l_username}}	10000	Crowd server
 10101	10106	USER	{{crowd.username}} {{crowd.l_username}}	10000	Crowd server
 10102	10107	USER	{{crowd.username}} {{crowd.l_username}}	10000	Crowd server
 10103	10108	USER	{{crowd.username}} {{crowd.l_username}}	10000	Crowd server
-\.
+{% endif %}\.
 
 
 --
@@ -6998,7 +6998,7 @@ COPY audit_log (id, remote_address, created, author_key, summary, category, obje
 10020	172.17.0.1	2016-07-06 12:42:57.989+00	\N	Permission scheme updated	permissions	SCHEME	0	Default Permission Scheme	\N	\N	0		\N		172.17.0.1 permission scheme updated permissions default manage sprints project role administrators
 10021	172.17.0.1	2016-07-06 12:42:58.065+00	\N	Permission scheme updated	permissions	SCHEME	0	Default Permission Scheme	\N	\N	0		\N		172.17.0.1 permission scheme updated permissions default manage sprints project role administrators
 10022	172.17.0.1	2016-07-06 12:42:58.082+00	\N	Permission scheme updated	permissions	SCHEME	0	Default Permission Scheme	\N	\N	0		\N		172.17.0.1 permission scheme updated permissions default manage sprints project role administrators
-10100	\N	2016-07-11 15:21:48.751+00	\N	User created	user management	USER	{{crowd.username}} {{crowd.l_username}}	10000	Crowd server	0		\N		user created management mosser crowd server sebastien mosser@polytech.unice.fr active
+10100	\N	2016-07-11 15:21:48.751+00	\N	User created	user management	USER	mosser	mosser	10000	Crowd server	0		\N		user created management mosser crowd server sebastien mosser@polytech.unice.fr active
 10101	\N	2016-07-11 15:21:49.082+00	\N	Group created	group management	GROUP	\N	jira-developers	10000	Crowd server	0		\N		group created management jira-developers crowd server
 10102	\N	2016-07-11 15:21:49.134+00	\N	Group created	group management	GROUP	\N	jira-users	10000	Crowd server	0		\N		group created management jira-users crowd server
 10103	\N	2016-07-11 15:21:49.157+00	\N	Group created	group management	GROUP	\N	crowd-administrators	10000	Crowd server	0		\N		group created management crowd-administrators crowd server
@@ -7368,8 +7368,8 @@ COPY cwd_group_attributes (id, group_id, directory_id, attribute_name, attribute
 --
 
 COPY cwd_membership (id, parent_id, child_id, membership_type, group_type, parent_name, lower_parent_name, child_name, lower_child_name, directory_id) FROM stdin;
-10000	10000	10000	GROUP_USER	\N	jira-administrators	jira-administrators	{{jira.username}}   {{jira.l_username}}	1
-10001	10010	10000	GROUP_USER	\N	jira-software-users	jira-software-users	{{jira.username}}   {{jira.l_username}}	1
+10000	10000	10000	GROUP_USER	\N	jira-administrators	jira-administrators	{{jira.username}}	{{jira.l_username}}	1
+10001	10010	10000	GROUP_USER	\N	jira-software-users	jira-software-users	{{jira.username}}	{{jira.l_username}}	1
 {% if crowd %}10100	10112	10100	GROUP_USER	\N	crowd-administrators	crowd-administrators	{{crowd.username}}  {{crowd.l_username}}	10000
 10101	10113	10100	GROUP_USER	\N	jira-administrators	jira-administrators	{{crowd.username}}  {{crowd.l_username}}	10000
 10102	10110	10100	GROUP_USER	\N	jira-developers	jira-developers	{{crowd.username}}  {{crowd.l_username}}	10000
@@ -7382,7 +7382,7 @@ COPY cwd_membership (id, parent_id, child_id, membership_type, group_type, paren
 --
 
 COPY cwd_user (id, directory_id, user_name, lower_user_name, active, created_date, updated_date, first_name, lower_first_name, last_name, lower_last_name, display_name, lower_display_name, email_address, lower_email_address, credential, deleted_externally, external_id) FROM stdin;
-10000	1	{{jira.username}}   {{jira.l_username}}	1	2016-07-06 12:42:45.445+00	2016-07-06 12:42:45.445+00	{{jira.first_name}}	{{jira.l_first_name}}	{{jira.last_name}}	{{jira.l_last_name}}	{{jira.first_name}} {{jira.last_name}}	{{jira.l_first_name}} {{jira.l_last_name}}	{{jira.mail}}	{{jira.mail}}	{{jira.password}}	\N	a8119957-8bc9-4989-a3e9-a5f0c6a8d700
+10000	1	{{jira.username}}	{{jira.l_username}}	1	2016-07-06 12:42:45.445+00	2016-07-06 12:42:45.445+00	{{jira.first_name}}	{{jira.l_first_name}}	{{jira.last_name}}	{{jira.l_last_name}}	{{jira.first_name}} {{jira.last_name}}	{{jira.l_first_name}} {{jira.l_last_name}}	{{jira.mail}}	{{jira.mail}}	{{jira.password}}	\N	a8119957-8bc9-4989-a3e9-a5f0c6a8d700
 {% if crowd %}10100	10000	{{crowd.username}}    {{crowd.l_username}}	1	2016-07-11 15:21:48.675+00	2016-07-11 15:21:48.675+00	{{crowd.first_name}}	{{crowd.l_first_name}}	{{crowd.last_name}}	{{crowd.l_last_name}}	{{crowd.first_name}} {{crowd.last_name}}	{{crowd.l_first_name}} {{crowd.l_last_name}}	{{crowd.mail}}	{{crowd.mail}}	nopass	\N	32769:3758d6eb-3142-4912-a10f-7ee680464c0a
 {% endif %}\.
 
