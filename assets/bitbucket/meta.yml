@@ -3,7 +3,8 @@ meta:
   ports:
     - 7990
   volumes:
-    -  data:/var/atlassian/application-data/bitbucket/shared/
+    -  data:/var/atlassian/application-data/bitbucket/shared/data
+    -  logs:/var/atlassian/application-data/bitbucket/log
 required:
   files:
       - bitbucket.properties:/var/atlassian/application-data/bitbucket/shared/data
