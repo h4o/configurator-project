@@ -22,6 +22,7 @@ class Generator:
 			config['config']['bitbucket']['password'] = passlib.hash.atlassian_pbkdf2_sha1.encrypt(config['config']['bitbucket']['password'])
 			config['config']['bitbucket']['l_first_name'] = config['config']['bitbucket']['first_name'].lower()
 			config['config']['bitbucket']['l_last_name'] = config['config']['bitbucket']['last_name'].lower()
+			config['config']['bitbucket']['l_username'] = config['config']['bitbucket']['username'].lower()
 		if('jira' in  config['linked-config']):
 			config['config']['jira'] = config['linked-config']['jira']
 			config['config']['jira']['license'] = config['config']['jira']['license'].replace('\n','\\')
