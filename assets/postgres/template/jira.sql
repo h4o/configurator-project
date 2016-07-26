@@ -7383,7 +7383,7 @@ COPY cwd_membership (id, parent_id, child_id, membership_type, group_type, paren
 
 COPY cwd_user (id, directory_id, user_name, lower_user_name, active, created_date, updated_date, first_name, lower_first_name, last_name, lower_last_name, display_name, lower_display_name, email_address, lower_email_address, credential, deleted_externally, external_id) FROM stdin;
 10000	1	{{jira.username}}   {{jira.l_username}}	1	2016-07-06 12:42:45.445+00	2016-07-06 12:42:45.445+00	{{jira.first_name}}	{{jira.l_first_name}}	{{jira.last_name}}	{{jira.l_last_name}}	{{jira.first_name}} {{jira.last_name}}	{{jira.l_first_name}} {{jira.l_last_name}}	{{jira.mail}}	{{jira.mail}}	{{jira.password}}	\N	a8119957-8bc9-4989-a3e9-a5f0c6a8d700
-{% if crowd %}10100	10000	{{crowd.username}}    {{crowd.l_username}}	1	2016-07-11 15:21:48.675+00	2016-07-11 15:21:48.675+00	Sebastien	sebastien	{{crowd.username}}  {{crowd.l_username}}	Sebastien Mosser	sebastien {{crowd.username}} {{crowd.l_username}}@polytech.unice.fr	mosser@polytech.unice.fr	nopass	\N	32769:3758d6eb-3142-4912-a10f-7ee680464c0a
+{% if crowd %}10100	10000	{{crowd.username}}    {{crowd.l_username}}	1	2016-07-11 15:21:48.675+00	2016-07-11 15:21:48.675+00	{{crowd.first_name}}	{{crowd.l_first_name}}	{{crowd.last_name}}	{{crowd.l_last_name}}	{{crowd.first_name}} {{crowd.last_name}}	{{crowd.l_first_name}} {{crowd.l_last_name}}	{{crowd.mail}}	{{crowd.mail}}	nopass	\N	32769:3758d6eb-3142-4912-a10f-7ee680464c0a
 {% endif %}\.
 
 
