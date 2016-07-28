@@ -91,9 +91,11 @@
     </parameters>
 
     <!-- CROWD:START - If enabling Crowd SSO integration uncomment the following SSOSeraphAuthenticator and comment out the JiraSeraphAuthenticator below -->
-    
+    {% if crowd %}
     <authenticator class="com.atlassian.jira.security.login.SSOSeraphAuthenticator"/>
-    
+    {% else %}
+    <authenticator class="com.atlassian.jira.security.login.JiraSeraphAuthenticator"/>
+    {% endif %}
     <!-- CROWD:END -->
 
     <!-- CROWD:START - The authenticator below here will need to be commented out for Crowd SSO integration -->

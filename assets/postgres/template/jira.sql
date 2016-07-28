@@ -6961,12 +6961,12 @@ COPY audit_changed_value (id, log_id, name, delta_from, delta_to) FROM stdin;
 --
 
 COPY audit_item (id, log_id, object_type, object_id, object_name, object_parent_id, object_parent_name) FROM stdin;
-10000	10007	USER	{{jira.username}}  {{jira.l_username}}	1	JIRA Internal Directory
-10001	10012	USER	{{jira.username}}  {{jira.l_username}}	1	JIRA Internal Directory{% if crowd %}
-10100	10105	USER	{{crowd.username}} {{crowd.l_username}}	10000	Crowd server
-10101	10106	USER	{{crowd.username}} {{crowd.l_username}}	10000	Crowd server
-10102	10107	USER	{{crowd.username}} {{crowd.l_username}}	10000	Crowd server
-10103	10108	USER	{{crowd.username}} {{crowd.l_username}}	10000	Crowd server
+10000	10007	USER	{{jira.username}}	{{jira.l_username}}	1	JIRA Internal Directory
+10001	10012	USER	{{jira.username}}	{{jira.l_username}}	1	JIRA Internal Directory{% if crowd %}
+10100	10105	USER	{{crowd.username}}	{{crowd.l_username}}	10000	Crowd server
+10101	10106	USER	{{crowd.username}}	{{crowd.l_username}}	10000	Crowd server
+10102	10107	USER	{{crowd.username}}	{{crowd.l_username}}	10000	Crowd server
+10103	10108	USER	{{crowd.username}}	{{crowd.l_username}}	10000	Crowd server
 {% endif %}\.
 
 
@@ -6981,7 +6981,7 @@ COPY audit_log (id, remote_address, created, author_key, summary, category, obje
 10003	172.17.0.1	2016-07-06 12:41:02.565+00	\N	Global permission added	permissions	PERMISSIONS	\N	Global Permissions	\N	\N	0		\N		172.17.0.1 global permission added permissions manage group filter subscriptions jira-software-users
 10004	172.17.0.1	2016-07-06 12:41:02.572+00	\N	Global permission added	permissions	PERMISSIONS	\N	Global Permissions	\N	\N	0		\N		172.17.0.1 global permission added permissions create shared objects jira-software-users
 10005	172.17.0.1	2016-07-06 12:41:02.612+00	\N	New license added	system	LICENSE	0	SEN-2428339	0	License SEN	0		\N		172.17.0.1 new license added system sen-2428339 sen polytech'nice sophia antipolis school of engineering 24/nov/15 jira software (server) unlimited users: community biwi-y40c-u8j3-i7yv -1
-10006	172.17.0.1	2016-07-06 12:42:45.695+00	\N	User created	user management	USER	{{jira.username}}  {{jira.l_username}}	1	JIRA Internal Directory	0		\N		172.17.0.1 user created management admin jira internal directory sebby momo test@test.fr active
+10006	172.17.0.1	2016-07-06 12:42:45.695+00	\N	User created	user management	USER	{{jira.username}}	{{jira.l_username}}	1	JIRA Internal Directory	0		\N		172.17.0.1 user created management admin jira internal directory sebby momo test@test.fr active
 10007	172.17.0.1	2016-07-06 12:42:45.78+00	\N	User added to group	group management	GROUP	\N	jira-administrators	1	JIRA Internal Directory	0		\N		172.17.0.1 user added to group management jira-administrators jira internal directory admin
 10008	172.17.0.1	2016-07-06 12:42:45.812+00	\N	Global permission added	permissions	PERMISSIONS	\N	Global Permissions	\N	\N	0		\N		172.17.0.1 global permission added permissions browse users jira-administrators
 10009	172.17.0.1	2016-07-06 12:42:45.839+00	\N	Global permission added	permissions	PERMISSIONS	\N	Global Permissions	\N	\N	0		\N		172.17.0.1 global permission added permissions bulk change jira-administrators
@@ -7155,8 +7155,8 @@ COPY clusteredjob (id, job_id, job_runner_key, sched_type, interval_millis, firs
 10111	80f4dd25-2f61-40a6-ac26-138bc87e54d6	com.atlassian.jira.plugin.ext.bamboo.service.PlanStatusUpdateJob	I	60000	1467808977468	\N	\N	1468251528759	36	\N
 10303	d17acbe2-ec2f-430f-a988-85bb4a05afe7	com.atlassian.jira.plugin.ext.bamboo.service.PlanStatusUpdateJob	I	60000	1468249482537	\N	\N	1468251529191	35	\N
 10301	CompatibilityPluginScheduler.JobId.Service Provider Session Remover	CompatibilityPluginScheduler.JobRunnerKey.Service Provider Session Remover	I	28800000	1468278281386	\N	\N	1468278281386	1	\N
-10304	com.atlassian.jira.crowd.embedded.JiraDirectoryPollerManager.10000	com.atlassian.jira.crowd.embedded.JiraDirectoryPollerManager	I	3600000	1468250560853	\N	\N	1468254160853	2	\\xaced000573720037636f6d2e676f6f676c652e636f6d6d6f6e2e636f6c6c6563742e496d6d757461626c6542694d61702453657269616c697a6564466f726d000000000000000002000078720035636f6d2e676f6f676c652e636f6d6d6f6e2e636f6c6c6563742e496d6d757461626c654d61702453657269616c697a6564466f726d00000000000000000200025b00046b6579737400135b4c6a6176612f6c616e672f4f626a6563743b5b000676616c75657371007e00027870757200135b4c6a6176612e6c616e672e4f626a6563743b90ce589f1073296c02000078700000000174000c4449524543544f52595f49447571007e0004000000017372000e6a6176612e6c616e672e4c6f6e673b8be490cc8f23df0200014a000576616c7565787200106a6176612e6c616e672e4e756d62657286ac951d0b94e08b02000078700000000000002710
-10109	com.atlassian.jira.plugins.dvcs.scheduler.DvcsScheduler:job	com.atlassian.jira.plugins.dvcs.scheduler.DvcsScheduler	I	3600000	1467811758204	\N	\N	1468253088773	2	\N
+{% if crowd %}10304	com.atlassian.jira.crowd.embedded.JiraDirectoryPollerManager.10000	com.atlassian.jira.crowd.embedded.JiraDirectoryPollerManager	I	3600000	1468250560853	\N	\N	1468254160853	2	\\xaced000573720037636f6d2e676f6f676c652e636f6d6d6f6e2e636f6c6c6563742e496d6d757461626c6542694d61702453657269616c697a6564466f726d000000000000000002000078720035636f6d2e676f6f676c652e636f6d6d6f6e2e636f6c6c6563742e496d6d757461626c654d61702453657269616c697a6564466f726d00000000000000000200025b00046b6579737400135b4c6a6176612f6c616e672f4f626a6563743b5b000676616c75657371007e00027870757200135b4c6a6176612e6c616e672e4f626a6563743b90ce589f1073296c02000078700000000174000c4449524543544f52595f49447571007e0004000000017372000e6a6176612e6c616e672e4c6f6e673b8be490cc8f23df0200014a000576616c7565787200106a6176612e6c616e672e4e756d62657286ac951d0b94e08b02000078700000000000002710
+{%endif%}10109	com.atlassian.jira.plugins.dvcs.scheduler.DvcsScheduler:job	com.atlassian.jira.plugins.dvcs.scheduler.DvcsScheduler	I	3600000	1467811758204	\N	\N	1468253088773	2	\N
 10105	CompatibilityPluginScheduler.JobId.PluginRequestCheckJob-job	CompatibilityPluginScheduler.JobRunnerKey.PluginRequestCheckJob-job-handler	I	3600000	1467808971840	\N	\N	1468253088773	3	\N
 10001	com.atlassian.jira.service.JiraService:10002	com.atlassian.jira.service.DefaultServiceManager	C	\N	\N	0 0 0 * * ?	\N	1468281600000	2	\\xaced000573720037636f6d2e676f6f676c652e636f6d6d6f6e2e636f6c6c6563742e496d6d757461626c6542694d61702453657269616c697a6564466f726d000000000000000002000078720035636f6d2e676f6f676c652e636f6d6d6f6e2e636f6c6c6563742e496d6d757461626c654d61702453657269616c697a6564466f726d00000000000000000200025b00046b6579737400135b4c6a6176612f6c616e672f4f626a6563743b5b000676616c75657371007e00027870757200135b4c6a6176612e6c616e672e4f626a6563743b90ce589f1073296c020000787000000001740033636f6d2e61746c61737369616e2e6a6972612e736572766963652e536572766963654d616e616765723a7365727669636549647571007e0004000000017372000e6a6176612e6c616e672e4c6f6e673b8be490cc8f23df0200014a000576616c7565787200106a6176612e6c616e672e4e756d62657286ac951d0b94e08b02000078700000000000002712
 10102	com.atlassian.jira.service.JiraService:10001	com.atlassian.jira.service.DefaultServiceManager	C	\N	\N	0 40 0/12 * * ?	\N	1468284000000	2	\\xaced000573720037636f6d2e676f6f676c652e636f6d6d6f6e2e636f6c6c6563742e496d6d757461626c6542694d61702453657269616c697a6564466f726d000000000000000002000078720035636f6d2e676f6f676c652e636f6d6d6f6e2e636f6c6c6563742e496d6d757461626c654d61702453657269616c697a6564466f726d00000000000000000200025b00046b6579737400135b4c6a6176612f6c616e672f4f626a6563743b5b000676616c75657371007e00027870757200135b4c6a6176612e6c616e672e4f626a6563743b90ce589f1073296c020000787000000001740033636f6d2e61746c61737369616e2e6a6972612e736572766963652e536572766963654d616e616765723a7365727669636549647571007e0004000000017372000e6a6176612e6c616e672e4c6f6e673b8be490cc8f23df0200014a000576616c7565787200106a6176612e6c616e672e4e756d62657286ac951d0b94e08b02000078700000000000002711
@@ -7278,8 +7278,8 @@ COPY customfieldvalue (id, issue, customfield, parentkey, stringvalue, numberval
 --
 
 COPY cwd_application (id, application_name, lower_application_name, created_date, updated_date, active, description, application_type, credential) FROM stdin;
-{%if crowd %}1	crowd-embedded	crowd-embedded	2013-02-28 11:57:51.302+00	2013-02-28 11:57:51.302+00	1		CROWD	X
-{% endif %}\.
+1	crowd-embedded	crowd-embedded	2013-02-28 11:57:51.302+00	2013-02-28 11:57:51.302+00	1		CROWD	X
+\.
 
 
 --
@@ -7295,8 +7295,8 @@ COPY cwd_application_address (application_id, remote_address, encoded_address_bi
 --
 
 COPY cwd_directory (id, directory_name, lower_directory_name, created_date, updated_date, active, description, impl_class, lower_impl_class, directory_type, directory_position) FROM stdin;
-1	JIRA Internal Directory	jira internal directory	2013-02-28 11:57:51.308+00	2013-02-28 11:57:51.308+00	1	JIRA default internal directory	com.atlassian.crowd.directory.InternalDirectory	com.atlassian.crowd.directory.internaldirectory	INTERNAL	0{% if crowd %}
-10000	Crowd server	crowd server	2016-07-11 15:21:40.318+00	2016-07-11 15:22:41.272+00	1	\N	com.atlassian.crowd.directory.RemoteCrowdDirectory	com.atlassian.crowd.directory.remotecrowddirectory	CROWD	1
+1	JIRA Internal Directory	jira internal directory	2013-02-28 11:57:51.308+00	2013-02-28 11:57:51.308+00	1	JIRA default internal directory	com.atlassian.crowd.directory.InternalDirectory	com.atlassian.crowd.directory.internaldirectory	INTERNAL	0
+{% if crowd %}10000	Crowd server	crowd server	2016-07-11 15:21:40.318+00	2016-07-11 15:22:41.272+00	1	\N	com.atlassian.crowd.directory.RemoteCrowdDirectory	com.atlassian.crowd.directory.remotecrowddirectory	CROWD	1
 {% endif %}\.
 
 
@@ -7317,6 +7317,10 @@ COPY cwd_directory_attribute (directory_id, attribute_name, attribute_value) FRO
 10000	com.atlassian.crowd.directory.sync.issynchronising	false
 10000	application.name	jira
 {% endif %}\.
+
+-- for some reason I can't use copy to add the data in cwd_directory_attribute and it is needed so that the internal directory works
+-- So this is a direty hack that do work
+insert into cwd_directory_attribute (directory_id, attribute_value, attribute_name) values (1,'atlassian-security','user_encryption_method');
 
 
 --

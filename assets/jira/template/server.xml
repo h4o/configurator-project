@@ -64,9 +64,9 @@
                    acceptCount="100"
                    disableUploadTimeout="true"
 
-                   {% if ssl %}
+                   {% if nginx.ssl %}
                            scheme="https"
-        proxyName="localhost"
+        proxyName="{{nginx.baseUrl}}"
         proxyPort="443"
         {% endif %}/>
 
