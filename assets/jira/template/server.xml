@@ -68,6 +68,7 @@
                            scheme="https"
         proxyName="{{nginx.baseUrl}}"
         proxyPort="443"
+         keystoreFile="usr/src/jira/keystore.jks" keystorePass="changeit"
         {% endif %}/>
 
         <!--
