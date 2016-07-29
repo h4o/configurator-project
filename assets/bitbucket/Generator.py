@@ -19,7 +19,17 @@ class Generator:
 		out = template.render(final_config)
 		with open(dest+"bitbucket.properties", "w") as fh:
 			fh.write(out)
-		
+		template = env.get_template('server.xml')
+		out = template.render(final_config)
+		with open(dest+"server.xml", "w") as fh:
+			fh.write(out)
+		template = env.get_template('Dockerfile')
+		out = template.render(final_config)
+		with open(dest+"Dockerfile", "w") as fh:
+			fh.write(out)
+		if(final_config['nginx']['ssl']):
+			with open(dest+"keystore.jks",'wb') as fh:
+				fh.write(final_config['keystore'])
 
 
 

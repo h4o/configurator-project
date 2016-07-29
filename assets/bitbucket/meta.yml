@@ -35,6 +35,9 @@ required:
     type: 'string'
   serverId:
     type: 'string'
+  keystore:
+    type: 'binary'
+    from: 'filesystem'
   images:
     - postgres
     - nginx
@@ -47,5 +50,7 @@ postgres:
     type: 'string'
     from: 'postgres'
     name: 'password'
+nginx:
+  
 
   
