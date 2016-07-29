@@ -40,10 +40,8 @@ class Generator:
 			with open(dest+"crowd.properties", "w") as fh:
 				fh.write(out)
 		if(final_config['nginx']['ssl']):
-			with open(dest+"cert.crt",'wb') as fh:
-				fh.write(final_config['nginx']['certificate'])
-			with open(dest+"key.key",'wb') as fh:
-				fh.write(final_config['nginx']['key'])
+			with open(dest+"keystore.jks",'wb') as fh:
+				fh.write(final_config['keystore'])
 		
 
 
