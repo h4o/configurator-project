@@ -24,6 +24,7 @@ bitbucket:
   first_name: 'Arnaud'
   last_name: 'Garnier'
   mail: 'arnaud@garnier.fr'
+  keystore: 'server.jks'
 jira:
   baseUrl: 'https://sparks-vm25.i3s.unice.fr'
   license: 'jira.license'
@@ -34,7 +35,7 @@ jira:
   first_name: 'Nicolas'
   last_name: 'Lecourtois'
   mail: 'nicolas@lecourtois.fr'
-
+  keystore: 'server.jks'
 nginx:
   certificate: 'tomcat.cert'
   key: 'server.key'
