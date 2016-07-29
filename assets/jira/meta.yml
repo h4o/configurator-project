@@ -49,3 +49,6 @@ bitbucket:
     type: 'string'
   baseUrl:
     type: 'string'
+nginx:
+  baseUrl:
+    type: 'string'

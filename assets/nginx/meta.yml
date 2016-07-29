@@ -10,6 +10,8 @@ required:
     type: 'binary'
     from: 'filesystem'
     necessary: false
+  baseUrl:
+    type: 'string'
 
 bitbucket:
     subdirectory:
