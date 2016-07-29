@@ -93,7 +93,7 @@ def callGenerators(imageList,config):
 			if connector in imageList:
 				data['linked-config'][connector]= config[connector]
 		###we use reflexivity to load the generator pertaining to the image
-
+		print('CALLING GENERATOR FOR ' + image)
 		g = locate('assets.'+image+'.Generator')
 		gen = g.Generator()
 		gen.generate(copy.deepcopy(data),'assets/'+image+'/','output/'+image+'/')
