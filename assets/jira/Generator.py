@@ -10,10 +10,13 @@ class Generator:
 
 	def generate(self,config,base,dest):
 		print("we generate our files !")
+		print("+=+=+=++=+=+=++=+=+=++=+=+=++=+=+=++=+=+=++=+=+=++=+=+=++=+=+=+")
+
 		copy_tree(base,dest)
 
 		final_config = {**dict(config['config']),**dict(config['linked-config'])}
 		final_config['license'] = final_config['license'].replace('\n',' \\\n') 
+		print(final_config['nginx'])
 		env = Environment(loader=FileSystemLoader(dest+'template'))
 		template = env.get_template('dbconfig.xml')
 		out = template.render(final_config)
@@ -36,6 +39,11 @@ class Generator:
 			out = template.render(final_config)
 			with open(dest+"crowd.properties", "w") as fh:
 				fh.write(out)
+		if(final_config['nginx']['ssl']):
+			with open(dest+"cert.crt",'wb') as fh:
+				fh.write(final_config['nginx']['certificate'])
+			with open(dest+"key.key",'wb') as fh:
+				fh.write(final_config['nginx']['key'])
 		
 
 
