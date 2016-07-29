@@ -1,6 +1,6 @@
 
 crowd:
-    baseUrl: 'http://134.59.130.155'
+    baseUrl: 'http://sparks-vm25.i3s.unice.fr'
     license: 'crowd.license'
     serverId: 'BFV6-7P8Y-30RK-Y1XO'
     subdirectory: 'crowd'
@@ -10,7 +10,7 @@ postgres:
     postgresUser: 'noopoe'
     postgresPassword: 'nope'
 bitbucket:
-  baseUrl: 'http://134.59.130.155'
+  baseUrl: 'http://sparks-vm25.i3s.unice.fr'
   license: 'bitbucket.license'
   username: 'username'
   password: 'password'
@@ -19,7 +19,7 @@ bitbucket:
   ownerName: 'me'
   serverId: 'BHXZ-7DZC-MKVG-YG2F'
 jira:
-  baseUrl: 'http://134.59.130.155'
+  baseUrl: 'http://sparks-vm25.i3s.unice.fr'
   license: 'jira.license'
   subdirectory: 'jira'
   username: 'test'
@@ -29,5 +29,5 @@ jira:
 nginx:
   certificate: 'tomcat.cert'
   key: 'server.key'
-  ssl: false
+  ssl: True
   
