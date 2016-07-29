@@ -27,6 +27,10 @@ class Generator:
 		out = template.render(final_config)
 		with open(dest+"Dockerfile", "w") as fh:
 			fh.write(out)
+		template = env.get_template('setenv.sh')
+		out = template.render(final_config)
+		with open(dest+"setenv.sh", "w") as fh:
+			fh.write(out)
 		if(final_config['nginx']['ssl']):
 			with open(dest+"keystore.jks",'wb') as fh:
 				fh.write(final_config['keystore'])

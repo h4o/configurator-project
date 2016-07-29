@@ -30,6 +30,10 @@ class Generator:
 		out = template.render(final_config)
 		with open(dest+"Dockerfile", "w") as fh:
 			fh.write(out)
+		template = env.get_template('setenv.sh')
+		out = template.render(final_config)
+		with open(dest+"setenv.sh", "w") as fh:
+			fh.write(out)
 		if('crowd' in final_config):
 			template = env.get_template('seraph-config.xml')
 			out = template.render(final_config)
