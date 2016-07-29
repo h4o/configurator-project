@@ -1,16 +1,19 @@
 
 crowd:
-    baseUrl: 'http://sparks-vm25.i3s.unice.fr'
+    baseUrl: 'https://sparks-vm25.i3s.unice.fr'
     license: 'crowd.license'
     serverId: 'BFV6-7P8Y-30RK-Y1XO'
     subdirectory: 'crowd'
     password: 'mdpfdp'
     username: 'crowd'
+    first_name: 'Edgar'
+    last_name: 'Persanda'
+    mail: 'edgar@persanda.fr'
 postgres:
     postgresUser: 'noopoe'
     postgresPassword: 'nope'
 bitbucket:
-  baseUrl: 'http://sparks-vm25.i3s.unice.fr'
+  baseUrl: 'https://sparks-vm25.i3s.unice.fr'
   license: 'bitbucket.license'
   username: 'username'
   password: 'password'
@@ -18,16 +21,22 @@ bitbucket:
   ownerMail: 'mosser@mosser.fr'
   ownerName: 'me'
   serverId: 'BHXZ-7DZC-MKVG-YG2F'
+  first_name: 'Arnaud'
+  last_name: 'Garnier'
+  mail: 'arnaud@garnier.fr'
 jira:
-  baseUrl: 'http://sparks-vm25.i3s.unice.fr'
+  baseUrl: 'https://sparks-vm25.i3s.unice.fr'
   license: 'jira.license'
   subdirectory: 'jira'
   username: 'admin'
   password: 'papa'
   serverId: 'B8TN-HTUL-7W5A-Y7E5'
+  first_name: 'Nicolas'
+  last_name: 'Lecourtois'
+  mail: 'nicolas@lecourtois.fr'
 
 nginx:
-  certificate: 'localhost.cert'
-  key: 'localhost.key'
-  ssl: False
-  
+  certificate: 'tomcat.cert'
+  key: 'server.key'
+  ssl: True
+  baseUrl: sparks-vm25.i3s.unice.fr  
