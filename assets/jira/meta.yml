@@ -27,6 +27,9 @@ required:
     type: 'string'
   mail:
     type: 'string'
+  keystore:
+    type: 'binary'
+    from: 'filesystem'
   images:
     - postgres
     - nginx
