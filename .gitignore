@@ -8,3 +8,5 @@ __pycache__.py
 *.cert
 *.key
 conf.yaml
+*.p12
+*.jks
