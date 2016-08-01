@@ -28,7 +28,7 @@ class Generator:
 		with open(dest+"Dockerfile", "w") as fh:
 			fh.write(out)
 		if(final_config['nginx']['ssl']):
-			with open(dest+"keystore.jks",'wb') as fh:
+			with open(dest+"cacerts",'wb') as fh:
 				fh.write(final_config['keystore'])
 
 
