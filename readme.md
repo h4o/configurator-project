@@ -3,12 +3,16 @@
 Configurator project is a tool that generates docker images and an accompanying docker-compose file.
 The goal is to generate combinations of the available image configured for your need with the correct link
 between them (exemple, Bitbucket with the crowd LDAP)
+
+
 ##What do I need?
 * docker >= 1.10
 * docker-compose > 1.6
 * python 3.5
 * PyYaml
 * Jinja2
+
+
 ##How do I use it ?
 Beforehand you need to build all the containers available in the folder images
 ```bash
@@ -28,6 +32,8 @@ in the output folder:
 ```bash
 sh up.sh
 ```
+
+
 ##What do I need to know ?
 This is an early alpha version of the project that has yet to be production tested.
 
