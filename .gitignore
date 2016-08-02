@@ -10,3 +10,5 @@ __pycache__.py
 conf.yaml
 *.p12
 *.jks
+.idea
+.idea/*
