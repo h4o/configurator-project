@@ -11,6 +11,7 @@ between them (exemple, Bitbucket with the crowd LDAP)
 * python 3.5
 * PyYaml
 * Jinja2
+* Passlib
 
 
 ##How do I use it ?
