@@ -1,28 +1,14 @@
-from distutils.dir_util import copy_tree
-from jinja2 import Environment, FileSystemLoader,Template
+from AbstractGenerator import AbstractGenerator
 
 
-class Generator:
-	def __init__(self):
+class Generator(AbstractGenerator):
+	def __init__(self, base, dest):
+		super().__init__(base, dest)
 		pass
 
-
-
-	def generate(self,config,base,dest):
+	def generate(self, config):
 		print("we generate our files !")
-		copy_tree(base,dest)
-		conf = dict(config)
-		conf['config']['postgres'] = conf['linked-config']['postgres']
-		env = Environment(loader=FileSystemLoader(dest+'template'))
-		template = env.get_template('crowd.properties')
-		out = template.render(conf['config'])
-		with open(dest+"crowd.properties", "w") as fh:
-			fh.write(out)
-		template = env.get_template('crowd.cfg.xml')
-		out = template.render(config['config'])
-		with open(dest+"crowd.cfg.xml", "w") as fh:
-			fh.write(out)
-
-
-
-
+		super().copy()
+		config['config']['postgres'] = config['linked-config']['postgres']
+		super().generate_template('crowd.properties', 'w', config['config'])
+		super().generate_template('crowd.cfg.xml', 'w', config['config'])

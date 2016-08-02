@@ -1,69 +1,42 @@
 from distutils.dir_util import copy_tree
-from jinja2 import Environment, FileSystemLoader,Template
+from jinja2 import Environment, FileSystemLoader, Template
 import copy
 import passlib.hash
+from AbstractGenerator import AbstractGenerator
 
-class Generator:
-	def __init__(self):
+
+class Generator(AbstractGenerator):
+	def __init__(self, base, dest):
+		super().__init__(base, dest)
 		pass
 
+	def generate_config(self, data):
+		data['password'] = passlib.hash.atlassian_pbkdf2_sha1.encrypt(data['password'])
+		data['l_first_name'] = data['first_name'].lower()
+		data['l_last_name'] = data['last_name'].lower()
+		data['l_username'] = data['username'].lower()
+		return data
 
-
-	def generate(self,config,base,dest):
+	def generate(self, config):
 		print("we generate our files !")
-		copy_tree(base,dest)
+		super().copy()
 
+		if 'bitbucket' in config['linked-config']:
+			config['config']['bitbucket'] = self.generate_config(config['linked-config']['bitbucket'])
+			config['config']['bitbucket']['license'] = config['config']['bitbucket']['license'].replace('\n', '\\')
+		if 'jira' in config['linked-config']:
+			config['config']['jira'] = self.generate_config(config['linked-config']['jira'])
+			config['config']['jira']['license'] = config['config']['jira']['license'].replace('\n', '\\')
 
-		env = Environment(loader=FileSystemLoader(dest+'template'))
-		template = env.get_template('Dockerfile')
-		if('bitbucket' in  config['linked-config']):
-			config['config']['bitbucket'] = config['linked-config']['bitbucket']
-			config['config']['bitbucket']['license'] = config['config']['bitbucket']['license'].replace('\n','\\')
-			config['config']['bitbucket']['password'] = passlib.hash.atlassian_pbkdf2_sha1.encrypt(config['config']['bitbucket']['password'])
-			config['config']['bitbucket']['l_first_name'] = config['config']['bitbucket']['first_name'].lower()
-			config['config']['bitbucket']['l_last_name'] = config['config']['bitbucket']['last_name'].lower()
-			config['config']['bitbucket']['l_username'] = config['config']['bitbucket']['username'].lower()
-		if('jira' in  config['linked-config']):
-			config['config']['jira'] = config['linked-config']['jira']
-			config['config']['jira']['license'] = config['config']['jira']['license'].replace('\n','\\')
-			config['config']['jira']['l_first_name'] = config['config']['jira']['first_name'].lower()
-			config['config']['jira']['l_last_name'] = config['config']['jira']['last_name'].lower()
-			config['config']['jira']['l_username'] = config['config']['jira']['username'].lower()
-			config['config']['jira']['password'] = passlib.hash.atlassian_pbkdf2_sha1.encrypt(config['config']['jira']['password'])
-		if('crowd' in config['linked-config']):
-			config['config']['crowd'] = config['linked-config']['crowd']
-			config['config']['crowd']['l_username'] = config['config']['crowd']['username'].lower()
-			config['config']['crowd']['l_first_name'] = config['config']['crowd']['first_name'].lower()
-			config['config']['crowd']['l_last_name'] = config['config']['crowd']['last_name'].lower()
-			config['config']['crowd']['password'] = passlib.hash.atlassian_pbkdf2_sha1.encrypt(config['config']['crowd']['password'])
-
-		print('+++++++++++++++++++++++++++++++++++++++')
-		print(config['config'])
-		print('++++++++++++++++++++++++++++++++++++++++')
+		if 'crowd' in config['linked-config']:
+			config['config']['crowd'] = self.generate_config(config['linked-config']['crowd'])
 
 		config['config']['nginx'] = config['linked-config']['nginx']
-		out = template.render(config['config'])
-		with open(dest+"Dockerfile", "w") as fh:
-			fh.write(out)
-		template = env.get_template('init-user-db.sh')
-		out = template.render(config['config'])
-		with open(dest+"init-user-db.sh", "w") as fh:
-			fh.write(out)
-		if('bitbucket' in config['linked-config']):
-			template = env.get_template('bitbucket.sql')
-			out = template.render(config['config'])
-			with open(dest+"bitbucket.sql", "w") as fh:
-				fh.write(out)
-		if('crowd' in config['linked-config']):
-			template = env.get_template('crowd.sql')
-			out = template.render(config['config'])
-			with open(dest+"crowd.sql", "w") as fh:
-				fh.write(out)
-		if('jira' in config['linked-config']):
-			template = env.get_template('jira.sql')
-			out = template.render(config['config'])
-			with open(dest+"jira.sql", "w") as fh:
-				fh.write(out)
-
-
-
+		super().generate_template('Dockerfile', 'w', config['config'])
+		super().generate_template('init-user-db.sh', 'w', config['config'])
+		if 'bitbucket' in config['linked-config']:
+			super().generate_template('bitbucket.sql', 'w', config['config'])
+		if 'crowd' in config['linked-config']:
+			super().generate_template('crowd.sql', 'w', config['config'])
+		if 'jira' in config['linked-config']:
+			super().generate_template('jira.sql', 'w', config['config'])

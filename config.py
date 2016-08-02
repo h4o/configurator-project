@@ -7,7 +7,7 @@ from pydoc import locate
 from jinja2 import Environment, FileSystemLoader,Template
 import yaml
 import copy
-
+import AbstractGenerator
 
 
 def iterateDependency(imgs):
@@ -95,8 +95,8 @@ def callGenerators(imageList,config):
 		###we use reflexivity to load the generator pertaining to the image
 		print('CALLING GENERATOR FOR ' + image)
 		g = locate('assets.'+image+'.Generator')
-		gen = g.Generator()
-		gen.generate(copy.deepcopy(data),'assets/'+image+'/','output/'+image+'/')
+		gen = g.Generator('assets/'+image+'/', 'output/'+image+'/')
+		gen.generate(copy.deepcopy(data))
 
 def generateComposition(imageList,config):
 	imageNameList = list(imageList.keys())

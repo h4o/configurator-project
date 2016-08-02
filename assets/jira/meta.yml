@@ -30,6 +30,7 @@ required:
   keystore:
     type: 'binary'
     from: 'filesystem'
+    necessary: False
   images:
     - postgres
     - nginx
