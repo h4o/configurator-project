@@ -12,7 +12,7 @@ JVM_SUPPORT_RECOMMENDED_ARGS=""
 # The following 2 settings control the minimum and maximum given to the JIRA Java virtual machine.  In larger JIRA instances, the maximum amount will need to be increased.
 #
 JVM_MINIMUM_MEMORY="384m"
-JVM_MAXIMUM_MEMORY="768m"
+JVM_MAXIMUM_MEMORY="{{max_memory}}m"
 
 #
 # The following are the required arguments for JIRA.

@@ -14,16 +14,11 @@ required:
     type: 'string'
 
 bitbucket:
-    subdirectory:
-    type: 'string'
-    from: 'input'
+
 crowd:
-    subdirectory:
-    type: 'string'
-    from: 'input'
+
 jira:
-    subdirectory:
-    type: 'string'
+
 meta:
     ports:
         - 443

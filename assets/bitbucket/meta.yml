@@ -6,8 +6,6 @@ meta:
     -  data:/var/atlassian/application-data/bitbucket/shared/data
     -  logs:/var/atlassian/application-data/bitbucket/log
 required:
-  files:
-      - bitbucket.properties:/var/atlassian/application-data/bitbucket/shared/data
   license:
     type: 'string'
     from: 'filesystem'
@@ -38,18 +36,12 @@ required:
   keystore:
     type: 'binary'
     from: 'filesystem'
+    necessary: False
   images:
     - postgres
     - nginx
 postgres:
-  postgresUser:
-    type: 'string'
-    from: 'postgres'
-    name: 'userName'
-  postgresPassword:
-    type: 'string'
-    from: 'postgres'
-    name: 'password'
+
 nginx:
   
 

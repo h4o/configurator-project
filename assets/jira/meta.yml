@@ -31,28 +31,15 @@ required:
     type: 'binary'
     from: 'filesystem'
     necessary: False
+  memory:
+    type: 'string'
   images:
     - postgres
     - nginx
 postgres:
-  postgresUser:
-    type: 'string'
-    from: 'postgres'
-    name: 'userName'
-  postgresPassword:
-    type: 'string'
-    from: 'postgres'
-    name: 'password'
+
 crowd:
-  subdirectory:
-    type: 'string'
-  baseUrl:
-    type: 'string'
+
 bitbucket:
-  subdirectory:
-    type: 'string'
-  baseUrl:
-    type: 'string'
+
 nginx:
-  baseUrl:
-    type: 'string'

@@ -5,8 +5,6 @@ meta:
   volumes:
       - data:/var/lib/postgresql/data
 required:
-  files:
-      - bitbucket.properties:/var/atlassian/application-data/bitbucket/shared
   postgresUser:
     type: 'string'
     from: 'postgres'
