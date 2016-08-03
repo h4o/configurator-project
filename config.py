@@ -46,12 +46,17 @@ def askForConfig(imageList, configFile):
 		config[el]['ip'] = base_ip + str(ip)
 		ip += 1
 		for quest in configInfo[el]:
-			if configFile and 'common' in configData and quest in configData['common']:
-				config[el][quest] = configData['common'][quest]
-			elif configFile and el in configData and quest in configData[el]:
+			if configFile and el in configData and quest in configData[el]:
 				config[el][quest] = configData[el][quest]
+			elif configFile and 'common' in configData and quest in configData['common']:
+				config[el][quest] = configData['common'][quest]
 			else:
-				config[el][quest] = input(quest + "?")
+				dataType = ""
+				if 'from' in configInfo[el][quest] and configInfo[el][quest]['from'] == 'filesystem':
+					dataType = " (file) "
+					if configInfo[el][quest]['type'] == 'binary':
+						dataType = " (binary file) "
+				config[el][quest] = input(quest + dataType + "? ")
 
 			if 'from' in configInfo[el][quest] and configInfo[el][quest]['from'] == 'filesystem':
 				readType = 'r'
