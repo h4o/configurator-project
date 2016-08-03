@@ -19,7 +19,7 @@ class Generator(AbstractGenerator):
 		super().generate_template('default.conf', 'w', {'images': images, 'ssl': config['config']['ssl']})
 		super().generate_template('Dockerfile', 'w', config['config'])
 		if config['config']['ssl']:
-			with open(super().dest + "cert.crt", 'wb') as fh:
+			with open(self.dest + "cert.crt", 'wb') as fh:
 				fh.write(config['config']['certificate'])
-			with open(super().dest + "key.key", 'wb') as fh:
+			with open(self.dest + "key.key", 'wb') as fh:
 				fh.write(config['config']['key'])

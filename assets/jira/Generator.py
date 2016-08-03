@@ -24,5 +24,5 @@ class Generator(AbstractGenerator):
 			super().generate_template('seraph-config.xml', 'w', final_config)
 			super().generate_template('crowd.properties', 'w', final_config)
 		if final_config['nginx']['ssl']:
-			with open(super().dest + "keystore.jks", 'wb') as fh:
+			with open(self.dest + "keystore.jks", 'wb') as fh:
 				fh.write(final_config['keystore'])

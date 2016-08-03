@@ -16,5 +16,5 @@ class Generator(AbstractGenerator):
 		super().generate_template('server.xml', 'w', final_config)
 		super().generate_template('Dockerfile', 'w', final_config)
 		if final_config['nginx']['ssl']:
-			with open(super().dest + "cacerts", 'wb') as fh:
+			with open(self.dest + "cacerts", 'wb') as fh:
 				fh.write(final_config['keystore'])
