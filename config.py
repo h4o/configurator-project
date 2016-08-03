@@ -46,7 +46,9 @@ def askForConfig(imageList, configFile):
 		config[el]['ip'] = base_ip + str(ip)
 		ip += 1
 		for quest in configInfo[el]:
-			if configFile and el in configData and quest in configData[el]:
+			if configFile and 'common' in configData and quest in configData['common']:
+				config[el][quest] = configData['common'][quest]
+			elif configFile and el in configData and quest in configData[el]:
 				config[el][quest] = configData[el][quest]
 			else:
 				config[el][quest] = input(quest + "?")
@@ -114,7 +116,7 @@ def generateComposition(imageList, config):
 		fh.write(out)
 
 if __name__ == '__main__':
-	
+
 	parser = argparse.ArgumentParser(description='Generates image and docker composition for you using its assets')
 	parser.add_argument('-c', '--config', help='Configuration file for options')
 	parser.add_argument('-i', '--images', help='Images to use', action='append', nargs='*', required=True)
