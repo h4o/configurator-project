@@ -2,7 +2,7 @@
 ##What is configurator project
 Configurator project is a tool that generates docker images and an accompanying docker-compose file.
 The goal is to generate combinations of the available image configured for your need with the correct link
-between them (exemple, Bitbucket with the crowd LDAP)
+between them (example, Bitbucket with the crowd LDAP)
 
 
 ##What do I need?
@@ -34,6 +34,38 @@ in the output folder:
 sh up.sh
 ```
 
+##What is the format of the configuration file ?
+
+The configuration file is a simple yaml document containing the different data necessary for the generation of image
+Optional info is not yet well supported so every information is asked for, if you think something is useless (like ssl certificate with ssl de-activated) just give dummy information
+There is for now 4 type of data that can be put in the configuration files
+ * string
+ * boolean
+ * ascii file
+ * binary file
+More are to come depending on our needs.
+Here is a exemple of a configuration file:
+```yaml
+common:
+  baseUrl: 'http://localhost'
+  username: 'crowd'
+  first_name: 'firstname'
+  last_name: 'lastname'
+  password: 'password'
+  mail: 'mail'
+crowd:
+    license: 'crowd.license'
+    subdirectory: 'crowd'
+jira:
+  license: 'jira.license'
+  subdirectory: 'jira'
+
+```
+Note that this isn't a complete file as some data is missing and the postgres and nginx configuration are missing too.
+There is two part in this file:
+* the common containing the data shared between every component
+* specific subparts for each image
+Data in a specific part will replace common data so you can still have special cases.
 
 ##What do I need to know ?
 This is an early alpha version of the project that has yet to be production tested.
