@@ -64,7 +64,6 @@ def minIp(ips):
 
 
 def askForConfig(imageList, configFile):
-	configList = {'global': {}}
 	configInfo = {}
 	config = {}
 	configData = {}
@@ -74,6 +73,11 @@ def askForConfig(imageList, configFile):
 				configData = yaml.load(stream)
 			except yaml.YAMLError as exc:
 				print(exc)
+	config['common'] = {}
+	if 'volumes_from' in configData['common']:
+		config['common']['volumes'] = configData['common']['volumes_from']
+	else:
+		config['common']['volumes'] = '/etc/data/'
 	for image in imageList:
 		configInfo[image] = imageList[image].getRequiredData()
 	genIp(configInfo,configData,config)
@@ -142,6 +146,7 @@ def generateComposition(imageList, config):
 		meta = imageList[name].getMeta()
 		meta['name'] = name
 		meta['ip'] = config[name]['ip']
+		meta['volumes_from'] = config['common']['volumes']
 		imageMeta.append(meta)
 	env = Environment(loader=FileSystemLoader('template'))
 	template = env.get_template('docker-compose.yml')
