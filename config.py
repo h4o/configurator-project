@@ -22,11 +22,41 @@ def iterateDependency(imgs):
 		imgs = imgSwp
 
 	return imageList
+def genIp(configInfo,configData,config):
+	base_ip = '173.17.0.'
+	ip = 1
+	ips = []
+	for el in configInfo:
+		config[el] = {}
+		if 'ip' in configData[el] and configData[el]['ip'] >= 1:
+			if not configData[el]['ip'] in ips:
+				ips.append(configData[el]['ip'])
+				config[el]['ip'] = base_ip + str(configData[el]['ip'])
+			else:
+				raise Exception('ip conflict detected for ip '+str(configData[el]['ip']))
+		else:
+			if not ip in ips:
+				config[el]['ip'] = base_ip + str(ip)
+				ips.append(ip)
+				ip += 1
+			else:
+				config[el]['ip'] = base_ip  + minIp(ips)
+				ip += 1
+
+def minIp(ips):
+	ips.sort()
+	N = ips.length()
+	if N >= 253:
+		raise Exception('all ip range used')
+	for cursor in range(N):
+		if array[cursor] != cursor+1:
+			ips.append(cursor)
+			return cursor
+	ips.append(N)
+	return N
 
 
 def askForConfig(imageList, configFile):
-	base_ip = '173.17.0.'
-	ip = 2
 	configList = {'global': {}}
 	configInfo = {}
 	config = {}
@@ -37,14 +67,10 @@ def askForConfig(imageList, configFile):
 				configData = yaml.load(stream)
 			except yaml.YAMLError as exc:
 				print(exc)
-
 	for image in imageList:
 		configInfo[image] = imageList[image].getRequiredData()
+	genIp(configInfo,configData,config)
 	for el in configInfo:
-		print('asking config for image ' + el)
-		config[el] = {}
-		config[el]['ip'] = base_ip + str(ip)
-		ip += 1
 		for quest in configInfo[el]:
 			if configFile and el in configData and quest in configData[el]:
 				config[el][quest] = configData[el][quest]
