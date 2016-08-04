@@ -16,6 +16,8 @@ The system asks for theses information to create your admin account. Please note
 * password
 * username
 * mail
+
+
 ###Other informations: Applinks
 If bitbucket is present in your installation, an application link will be created but it won't work, it is a known bug.
 To correct it, once the system has booted and is correctly set up, go in you administration panel, select applications>application links

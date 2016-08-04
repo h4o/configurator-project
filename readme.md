@@ -96,9 +96,13 @@ If crowd is enabled the Jira adminstrator won't be able to login.
 * [Jira](docs/jira.mq)
 * [Bitbucket](docs/bitbucket.md)
 * [Crowd](docs/crowd.md)
+
 Other image, used by the previous ones:
+
 * [PostgreSQl](docs/postgre.md)
 * [Nginx](docs/nginx.md)
+
+
 ##What kind of configuration is put in place?
 Each image is set up with the given license, the certificate and the keystore if needed. An admin account is created for each separate image with the given credentials. 
 

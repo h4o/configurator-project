@@ -14,6 +14,8 @@ The system asks for theses information to create your admin account.
 * password
 * username
 * mail
+
+
 ###Other informations: Trusted application
 Crowd use fixed internal ips to setup trusted applications in the system, but thoses are generated and can be different everytime you use config.py to generate a new configuration. 
 If you don't want them to change so you can keep the same database with different similar configuration, we recommand to fixe thoses ip using the ip configuration in your configuration file.
