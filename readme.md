@@ -93,7 +93,7 @@ Volumes are created for each image and placed in the folder /etc/data.
 If crowd is enabled the Jira adminstrator won't be able to login.
 
 ##What are the available images ?
-* [Jira](docs/jira.mq)
+* [Jira](docs/jira.md)
 * [Bitbucket](docs/bitbucket.md)
 * [Crowd](docs/crowd.md)
 
