@@ -34,24 +34,31 @@ def genIp(configInfo,configData,config):
 				config[el]['ip'] = base_ip + str(configData[el]['ip'])
 			else:
 				raise Exception('ip conflict detected for ip '+str(configData[el]['ip']))
-		else:
+	print("ips:"+str(ips))
+	for el in configInfo:
+		if 'ip' not in config[el]:
 			if not ip in ips:
+				print(str(ip)+ " not in "+str(ips))
 				config[el]['ip'] = base_ip + str(ip)
 				ips.append(ip)
 				ip += 1
 			else:
-				config[el]['ip'] = base_ip  + minIp(ips)
+				config[el]['ip'] = base_ip  + str(minIp(ips))
 				ip += 1
 
 def minIp(ips):
 	ips.sort()
-	N = ips.length()
+	N = len(ips)
+	print('finding min ip')
+	print(str(ips)+ " of len"+str(N))
 	if N >= 253:
 		raise Exception('all ip range used')
 	for cursor in range(N):
-		if array[cursor] != cursor+1:
-			ips.append(cursor)
-			return cursor
+		print('check for '+str(cursor))
+		if ips[cursor] != cursor+1:
+			print(str(ips[cursor])+' != '+str(cursor+1))
+			ips.append(cursor+1)
+			return cursor+1
 	ips.append(N)
 	return N
 
