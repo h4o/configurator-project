@@ -74,7 +74,7 @@ def askForConfig(imageList, configFile):
 			except yaml.YAMLError as exc:
 				print(exc)
 	config['common'] = {}
-	if 'volumes_from' in configData['common']:
+	if 'common' in configData and 'volumes_from' in configData['common']:
 		config['common']['volumes'] = configData['common']['volumes_from']
 	else:
 		config['common']['volumes'] = '/etc/data/'
