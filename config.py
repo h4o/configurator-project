@@ -82,12 +82,16 @@ def askForConfig(imageList, configFile):
 		configInfo[image] = imageList[image].getRequiredData()
 	genIp(configInfo,configData,config)
 	for el in configInfo:
+		nameshown = False
 		for quest in configInfo[el]:
 			if configFile and el in configData and quest in configData[el]:
 				config[el][quest] = configData[el][quest]
 			elif configFile and 'common' in configData and quest in configData['common']:
 				config[el][quest] = configData['common'][quest]
 			else:
+				if not nameshown:
+					print(el+":")
+					nameshown = True
 				dataType = ""
 				if 'from' in configInfo[el][quest] and configInfo[el][quest]['from'] == 'filesystem':
 					dataType = " (file) "
