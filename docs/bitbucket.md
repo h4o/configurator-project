@@ -6,6 +6,12 @@ General parameters:
 * *baseUrl* : the url of your server including the protocol
 * *subdirectory* : the subdirectory from which jira will be called, used in the nginx configuration, jira will be available from baseUrl/subdirecory
 * *serverId* : the server Id linked with your license in your my.atlassian.com console, if you don't have one let it blank and it should work
+
+### SSL
+By default the system uses Nginx's configuration to choose whether to activate or not the ssl, but if you are using 
+ a self signed certificate you may need to activate theses options to make application links between jira and bitbucket work
+ [To convert add an ssl certificate to a java keystore](ssl.md)
+* *self_signed* (boolean) : whether the certificate is self signed or not
 * *keystore* : the address of the local keystore(java format) on your server in case you have a self signed certificate, necessary for applinks to work
 ###Admin account information:
 The system asks for theses information to create your admin account.
