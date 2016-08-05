@@ -33,6 +33,8 @@ required:
     necessary: False
   max_memory:
     type: 'string'
+  self_signed:
+    type: 'boolean'
   images:
     - postgres
     - nginx
