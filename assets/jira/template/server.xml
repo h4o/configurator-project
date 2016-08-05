@@ -66,9 +66,7 @@
                    proxyName="{{nginx.baseUrl}}"
                    {% if nginx.ssl %}
                            scheme="https"
-        proxyName="{{nginx.baseUrl}}"
         proxyPort="443"
-         truststoreFile="/usr/src/jira/keystore.jks" truststorePass="changeit"
         {% endif %}/>
 
         <!--
