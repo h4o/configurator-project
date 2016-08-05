@@ -6,6 +6,7 @@ General parameters:
 * *baseUrl* : the url of your server including the protocol
 * *subdirectory* : the subdirectory from which jira will be called, used in the nginx configuration, jira will be available from baseUrl/subdirecory
 * *serverId* : the server Id linked with your license in your my.atlassian.com console, if you don't have one let it blank and it should work
+* *max_memory* : the maximum memory in mo that bitbucket will be allowed to use
 
 ### SSL
 By default the system uses Nginx's configuration to choose whether to activate or not the ssl, but if you are using 
