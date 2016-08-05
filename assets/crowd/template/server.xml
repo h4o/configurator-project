@@ -16,8 +16,11 @@
                    URIEncoding="UTF-8"
                    compression="on"
                    compressableMimeType="text/html,text/xml,application/xml,text/plain,text/css,application/json,application/javascript,application/x-javascript"
-                   scheme="https" proxyName="localhost" 
-                   proxyPort="443" />
+                   proxyName="{{nginx.baseUrl}}"
+                   {% if nginx.ssl %}
+                   scheme="https" 
+                   proxyPort="443"
+                   {% endif %} />
 
         <Engine defaultHost="localhost" name="Catalina">
             <Host appBase="webapps" autoDeploy="true" name="localhost" unpackWARs="true"/>

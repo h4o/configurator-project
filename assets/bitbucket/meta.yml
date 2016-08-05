@@ -12,12 +12,6 @@ required:
   baseUrl:
     type: 'string'
     from: 'input'
-  ownerName:
-    type: 'string'
-    from: 'input'
-  ownerMail:
-    type: 'string'
-    from: 'input'
   subdirectory:
     type: 'string'
     from: 'input'
@@ -37,6 +31,8 @@ required:
     type: 'binary'
     from: 'filesystem'
     necessary: False
+  self_signed:
+    type: 'boolean'
   images:
     - postgres
     - nginx

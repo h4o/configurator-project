@@ -14,7 +14,7 @@ services:
     {% if image.volumes %}
     volumes:
       {% for volume in image.volumes %}
-      - /etc/data/{{ image.name }}/{{ volume.name }}:{{ volume.dir }}
+      - {{image.volumes_from}}{{ image.name }}/{{ volume.name }}:{{ volume.dir }}
       {% endfor %}
     {% endif %}
   {% endfor %}

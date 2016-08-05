@@ -22,12 +22,48 @@ def iterateDependency(imgs):
 		imgs = imgSwp
 
 	return imageList
+def genIp(configInfo,configData,config):
+	base_ip = '173.17.0.'
+	ip = 1
+	ips = []
+	for el in configInfo:
+		config[el] = {}
+		if 'ip' in configData[el] and configData[el]['ip'] >= 1:
+			if not configData[el]['ip'] in ips:
+				ips.append(configData[el]['ip'])
+				config[el]['ip'] = base_ip + str(configData[el]['ip'])
+			else:
+				raise Exception('ip conflict detected for ip '+str(configData[el]['ip']))
+	print("ips:"+str(ips))
+	for el in configInfo:
+		if 'ip' not in config[el]:
+			if not ip in ips:
+				print(str(ip)+ " not in "+str(ips))
+				config[el]['ip'] = base_ip + str(ip)
+				ips.append(ip)
+				ip += 1
+			else:
+				config[el]['ip'] = base_ip  + str(minIp(ips))
+				ip += 1
+
+def minIp(ips):
+	ips.sort()
+	N = len(ips)
+	print('finding min ip')
+	print(str(ips)+ " of len"+str(N))
+	if N >= 253:
+		raise Exception('all ip range used')
+	for cursor in range(N):
+		print('check for '+str(cursor))
+		if ips[cursor] != cursor+1:
+			print(str(ips[cursor])+' != '+str(cursor+1))
+			ips.append(cursor+1)
+			return cursor+1
+	ips.append(N)
+	return N
 
 
 def askForConfig(imageList, configFile):
-	base_ip = '173.17.0.'
-	ip = 2
-	configList = {'global': {}}
 	configInfo = {}
 	config = {}
 	configData = {}
@@ -37,14 +73,15 @@ def askForConfig(imageList, configFile):
 				configData = yaml.load(stream)
 			except yaml.YAMLError as exc:
 				print(exc)
-
+	config['common'] = {}
+	if 'volumes_from' in configData['common']:
+		config['common']['volumes'] = configData['common']['volumes_from']
+	else:
+		config['common']['volumes'] = '/etc/data/'
 	for image in imageList:
 		configInfo[image] = imageList[image].getRequiredData()
+	genIp(configInfo,configData,config)
 	for el in configInfo:
-		print('asking config for image ' + el)
-		config[el] = {}
-		config[el]['ip'] = base_ip + str(ip)
-		ip += 1
 		for quest in configInfo[el]:
 			if configFile and el in configData and quest in configData[el]:
 				config[el][quest] = configData[el][quest]
@@ -109,6 +146,7 @@ def generateComposition(imageList, config):
 		meta = imageList[name].getMeta()
 		meta['name'] = name
 		meta['ip'] = config[name]['ip']
+		meta['volumes_from'] = config['common']['volumes']
 		imageMeta.append(meta)
 	env = Environment(loader=FileSystemLoader('template'))
 	template = env.get_template('docker-compose.yml')

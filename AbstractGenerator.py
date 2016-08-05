@@ -5,12 +5,11 @@ import shutil
 import os
 
 class AbstractGenerator(ABC):
-    def __init__(self,base,dest):
+    def __init__(self, base, dest):
         self.base = base
         self.dest = dest
-        pass
     @abstractmethod
-    def generate(self,config,base,dest):
+    def generate(self, config, base, dest):
         pass
 
     def copy(self):

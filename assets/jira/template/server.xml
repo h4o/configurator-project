@@ -63,7 +63,7 @@
                    redirectPort="8443"
                    acceptCount="100"
                    disableUploadTimeout="true"
-
+                   proxyName="{{nginx.baseUrl}}"
                    {% if nginx.ssl %}
                            scheme="https"
         proxyName="{{nginx.baseUrl}}"

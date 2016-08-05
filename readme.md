@@ -13,6 +13,20 @@ between them (example, Bitbucket with the crowd LDAP)
 * Jinja2
 * Passlib
 
+To install Passlib, Jinja2 and PyYaml you must une pip
+Either with
+```bash
+sudo pip install PyYaml
+sudo pip install Jinja2
+sudo pip install Passlib
+```
+Or with
+```bash
+sudo Python3.5 -m pip install PyYaml
+sudo Python3.5 -m pip install Jinja2
+sudo Python3.5 -m pip install Passlib
+```
+If you can't find a build of Python3.5 for your OS I recommend using pyenv
 
 ##How do I use it ?
 Beforehand you need to build all the containers available in the folder images
@@ -67,6 +81,10 @@ There is two part in this file:
 * specific subparts for each image
 Data in a specific part will replace common data so you can still have special cases.
 
+### Special case, the ip configuration
+We use a sub network in the 173.17.0.0/16 range to attribute the different ips to each image so that we can address the in the subnetwork directly when necessary (e.g the proxy configuration and crowd's trusted applications) but in the default state a new different ip configuration will be generated each time you launch the tool which you may not want because you then either have to manually change the database or erase it to get crowd to work again. A solution we devised is simple: you can fix the ip of a service in 
+the conf.yml file, just add "ip: number" where number is the last part of the ip you want it to use in the specific configuration of each image.
+
 ##What do I need to know ?
 This is an early alpha version of the project that has yet to be production tested.
 
@@ -75,9 +93,15 @@ Volumes are created for each image and placed in the folder /etc/data.
 If crowd is enabled the Jira adminstrator won't be able to login.
 
 ##What are the available images ?
-* Jira
-* Bitbucket
-* Crowd
+* [Jira](docs/jira.md)
+* [Bitbucket](docs/bitbucket.md)
+* [Crowd](docs/crowd.md)
+
+Other image, used by the previous ones:
+
+* [PostgreSQl](docs/postgre.md)
+* [Nginx](docs/nginx.md)
+
 
 ##What kind of configuration is put in place?
 Each image is set up with the given license, the certificate and the keystore if needed. An admin account is created for each separate image with the given credentials. 
