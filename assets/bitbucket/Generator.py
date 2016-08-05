@@ -15,6 +15,7 @@ class Generator(AbstractGenerator):
 		super().generate_template('bitbucket.properties', 'w', final_config)
 		super().generate_template('server.xml', 'w', final_config)
 		super().generate_template('Dockerfile', 'w', final_config)
+		super().generate_template('setenv.sh', 'w', final_config)
 		if final_config['nginx']['ssl']:
-			with open(self.dest + "cacerts", 'wb') as fh:
+			with open(self.dest + "keystore.jks", 'wb') as fh:
 				fh.write(final_config['keystore'])

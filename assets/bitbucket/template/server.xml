@@ -76,10 +76,9 @@
                    compressableMimeType="text/html,text/xml,text/plain,text/css,application/json,application/javascript,application/x-javascript" 
 
 
-
+                          proxyName="{{nginx.baseUrl}}"
                    {% if nginx.ssl %}
                            scheme="https"
-        proxyName="{{nginx.baseUrl}}"
         proxyPort="443"
          truststoreFile="/usr/src/bitbucket/keystore.jks" truststorePass="changeit"
         {% endif %}/>

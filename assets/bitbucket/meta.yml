@@ -31,6 +31,8 @@ required:
     type: 'binary'
     from: 'filesystem'
     necessary: False
+  self_signed:
+    type: 'boolean'
   images:
     - postgres
     - nginx
