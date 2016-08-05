@@ -16,7 +16,7 @@ PRGDIR=`dirname "$PRG"`
 . $PRGDIR/set-bitbucket-home.sh
 
 if [ -z "$JAVA_HOME" ]; then
-    export JAVA_HOME=/opt/atlassian/bitbucket/4.7.1/jre
+    export JAVA_HOME=/opt/atlassian/bitbucket/jre
 fi
 
 if [ -n "$JAVA_HOME" ] && [ -x "$JAVA_HOME/bin/java" ];  then
