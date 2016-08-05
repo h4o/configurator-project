@@ -56,7 +56,7 @@ fi
 
 JAVA_OPTS="-Xms${JVM_MINIMUM_MEMORY} -Xmx${JVM_MAXIMUM_MEMORY} ${JAVA_OPTS} ${JVM_REQUIRED_ARGS} ${DISABLE_NOTIFICATIONS} ${JVM_SUPPORT_RECOMMENDED_ARGS} ${JVM_EXTRA_ARGS} ${JIRA_HOME_MINUSD}"
 {% if self_signed and nginx.ssl %}
-JAVA_OPTS="$JAVA_OPTS -Djavax.net.ssl.trustStore=/etc/src/jira/keystore.jks -Djavax.net.ssl.trustStorePassword=changeit -server"
+JAVA_OPTS="$JAVA_OPTS -Djavax.net.ssl.trustStore=/usr/src/jira/keystore.jks -Djavax.net.ssl.trustStorePassword=changeit -server"
 {% endif %}
 export JAVA_OPTS
 # DO NOT remove the following line
