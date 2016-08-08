@@ -67,6 +67,8 @@
                    {% if nginx.ssl %}
                            scheme="https"
         proxyPort="443"
+         {% else %}
+         proxyPort="80"
         {% endif %}/>
 
         <!--
