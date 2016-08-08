@@ -81,6 +81,8 @@
                            scheme="https"
         proxyPort="443"
          truststoreFile="/usr/src/bitbucket/keystore.jks" truststorePass="changeit"
+         {% else %}
+         proxyPort="80"
         {% endif %}/>
 
         <!-- A "Connector" using the shared thread pool-->
