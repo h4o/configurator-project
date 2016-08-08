@@ -24,6 +24,8 @@ The first one will ask for the password used at the creation of the key and an e
 The second one will ask for the password of the file you're exporting to, by default it is changeit, 
 then it will ask for your export password you just set with openssl.
 
+Keytool is installed by default in most distributions. If you can't find it in the default binary folder,
+search for the bin folder of your java installation.
 
 ```bash
 openssl pkcs12 -export -in cert.pem -inkey key.pem > server.p12
