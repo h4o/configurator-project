@@ -17,7 +17,10 @@ services:
       - {{image.volumes_from}}{{ image.name }}/{{ volume.name }}:{{ volume.dir }}
       {% endfor %}
     {% endif %}
+    environment:
+      - TZ=Europe/Paris
   {% endfor %}
+
 networks:
   net:
     driver: bridge
