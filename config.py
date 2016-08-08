@@ -28,7 +28,7 @@ def genIp(configInfo,configData,config):
 	ips = []
 	for el in configInfo:
 		config[el] = {}
-		if 'ip' in configData[el] and configData[el]['ip'] >= 1:
+		if configData and 'ip' in configData[el] and configData[el]['ip'] >= 1:
 			if not configData[el]['ip'] in ips:
 				ips.append(configData[el]['ip'])
 				config[el]['ip'] = base_ip + str(configData[el]['ip'])
@@ -74,7 +74,7 @@ def askForConfig(imageList, configFile):
 			except yaml.YAMLError as exc:
 				print(exc)
 	config['common'] = {}
-	if 'common' in configData and 'volumes_from' in configData['common']:
+	if configFile and 'common' in configData and 'volumes_from' in configData['common']:
 		config['common']['volumes'] = configData['common']['volumes_from']
 	else:
 		config['common']['volumes'] = '/etc/data/'
