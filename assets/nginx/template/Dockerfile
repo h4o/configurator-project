@@ -1,4 +1,4 @@
-FROM nginx-proxy
+FROM fabienv/nginx-proxy
 COPY default.conf /etc/nginx/conf.d/
 {% if ssl %}
 COPY cert.crt /etc/ssl/private/  
