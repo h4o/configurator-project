@@ -11,7 +11,7 @@ General parameters:
 ### SSL
 By default the system uses Nginx's configuration to choose whether to activate or not the ssl, but if you are using 
  a self signed certificate you may need to activate theses options to make application links between jira and bitbucket work
- [To convert add an ssl certificate to a java keystore](ssl.md)
+ [More about ssl](ssl.md)
 * *self_signed* (boolean) : whether the certificate is self signed or not
 * *keystore* : the address of the local keystore(java format) on your server in case you have a self signed certificate, necessary for applinks to work
 ###Admin account information:
