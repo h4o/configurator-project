@@ -59,8 +59,8 @@ def minIp(ips):
 			print(str(ips[cursor])+' != '+str(cursor+1))
 			ips.append(cursor+1)
 			return cursor+1
-	ips.append(N)
-	return N
+	ips.append(N+1)
+	return N+1
 
 
 def askForConfig(imageList, configFile):
