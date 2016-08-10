@@ -10,3 +10,6 @@ COPY keystore.jks /usr/src/jira
 ##ENV JAVA_OPTS $JAVA_OPTS -Djavax.net.ssl.trustStore=/usr/src/jira/keystore.jks -Djavax.net.ssl.trustStorePassword=changeit -server
 {% endif %}
 COPY setenv.sh /opt/atlassian/jira/bin
+COPY ./launcher.sh /opt/atlassian/jira/bin
+WORKDIR /opt/atlassian/jira/bin
+CMD ["sh","launcher.sh"]

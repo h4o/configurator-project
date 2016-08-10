@@ -20,7 +20,9 @@
                    {% if nginx.ssl %}
                    scheme="https" 
                    proxyPort="443"
-                   {% endif %} />
+         {% else %}
+         proxyPort="80"
+        {% endif %}/>
 
         <Engine defaultHost="localhost" name="Catalina">
             <Host appBase="webapps" autoDeploy="true" name="localhost" unpackWARs="true"/>

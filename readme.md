@@ -29,9 +29,11 @@ sudo Python3.5 -m pip install Passlib
 If you can't find a build of Python3.5 for your OS I recommend using pyenv
 
 ##How do I use it ?
-Beforehand you need to build all the containers available in the folder images
+The containers should be available in docker.io's public repository, if for some reason you can't access them
+use this command to build them yourself:
 ```bash
-sh ./images/build-all.sh 
+cd images
+sh ./build-all.sh 
 ```
 To use the interactive prompt for configuration:
 ```bash

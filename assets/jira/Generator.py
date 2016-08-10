@@ -18,7 +18,7 @@ class Generator(AbstractGenerator):
 		super().generate_template('server.xml', 'w', final_config)
 		super().generate_template('Dockerfile', 'w', final_config)
 		super().generate_template('setenv.sh', 'w', final_config)
-
+		super().generate_template('launcher.sh', 'w', final_config)
 
 		if 'crowd' in final_config:
 			super().generate_template('seraph-config.xml', 'w', final_config)

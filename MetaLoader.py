@@ -1,5 +1,6 @@
 import yaml
 
+
 class MetaLoader:
 	def __init__(self,base):
 		self.base = base
@@ -12,6 +13,7 @@ class MetaLoader:
 				pass
 			finally:
 				pass
+
 	def getConnectors(self):
 		connectors = []
 		for connector in self.meta:
@@ -27,7 +29,6 @@ class MetaLoader:
 					requiredData[required] = self.meta['required'][required]
 		return requiredData
 
-
 	def getMeta(self):
 		meta = dict(self.meta['meta'])
 		print(meta)
@@ -39,7 +40,6 @@ class MetaLoader:
 				volumeInfo = volume.split(':')
 				meta['volumes'].append({'name':volumeInfo[0],'dir':volumeInfo[1]})
 		return meta
-
 
 	def getRequiredImages(self):
 

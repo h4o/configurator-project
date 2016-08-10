@@ -5,11 +5,11 @@ host="172.17.0.1"
 
 ntpdate-debian pool.ntp.org
 
-export PGPASSWORD={{postgres.}}
+export PGPASSWORD={{postgres.postgresPassword}}
 
-until psql -h "$host" -U "postgres" -c '\l'; do
+until psql -h "$host" -U "{{postgres.postgresUser}}" -c '\l'; do
 #  >&2 echo "Postgres is unavailable - sleeping"
-  sleep 1
+  sleep 10
 done
 
 #>&2 echo "Postgres is up - executing command"

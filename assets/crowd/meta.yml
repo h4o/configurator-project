@@ -27,6 +27,10 @@ required:
     type: 'string'
   mail:
     type: 'string'
+  polytech_api:
+    type: 'boolean'
+  polytech_api_password:
+    type: 'string'
   images:
     - postgres
     - nginx
