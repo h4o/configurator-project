@@ -1,4 +1,4 @@
-FROM jira
+FROM fabienv/jira
 COPY dbconfig.xml /var/atlassian/application-data/jira/
 COPY server.xml  /opt/atlassian/jira/conf
 {% if crowd %}
