@@ -28,3 +28,6 @@ The system asks for theses information to create your admin account.
 If bitbucket is present in your installation, an application link will be created but it won't work, it is a known bug.
 To correct it, once the system has booted and is correctly set up, go in you administration panel, select applications>application links
 delete the current one and then enter the url of jira, then follow the instructions in the panel to setup the applink correctly.
+
+###More technical information
+You can find more technical information [here](technical/bitbucket.md)

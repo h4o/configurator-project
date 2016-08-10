@@ -15,7 +15,12 @@ The system asks for theses information to create your admin account.
 * username
 * mail
 
+###Development API
+An api developped by Nicolas Lecourtois can be found [here](https://github.com/h4o/polystage)
+You can activate it by setting polytech_api to true and choosing a password with polytech_api_password 
 
 ###Other informations: Trusted application
 Crowd use fixed internal ips to setup trusted applications in the system, but thoses are generated and can be different everytime you use config.py to generate a new configuration. 
 If you don't want them to change so you can keep the same database with different similar configuration, we recommand to fixe thoses ip using the ip configuration in your configuration file.
+###More technical information
+You can find more technical information [here](technical/crowd.md)

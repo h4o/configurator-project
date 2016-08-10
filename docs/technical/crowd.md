@@ -23,3 +23,7 @@ You have to know that when an image like jira and bitbucket is setup, the corres
 application is setup in crowd's database using the internal ips set in the docker-compose.yml file,
 those are susceptible to change so if you want them to stay between minor configuration change, remember
 to fix them using the ip option in your conf.yml file.
+
+If you set polytech_api to true, an appplication will be added with the rights to use it given to
+nginx's ip effectively making it usable via the web. Its name is "polyproject" and its password will be set
+to polytech_api_password (hashed via PKS512 like the admin password).
