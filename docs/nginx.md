@@ -5,3 +5,5 @@ Here are the different parameters for nginx.
 * *certificate* : (leave blank if ssl is false) your ssl certificate
 * *key* : (leave blank if ssl is false) your ssl private key
 * *baseUrl* : the base url *without* the protocol name
+###More technical information
+You can find more technical information [here](technical/nginx.md)
