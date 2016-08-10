@@ -3,11 +3,11 @@ set -e
 
 host="172.17.0.1"
 
-ntpdate-debian pool.ntp.org
+ntpdate-debian pool.ntp.org &
 
 export PGPASSWORD={{postgres.postgresPassword}}
 
-until psql -h "$host" -U "{{postgres.postgresUser}}" -c '\l'; do
+until psql crowd -h "$host" -U "{{postgres.postgresUser}}" -c '\l'; do
 #  >&2 echo "Postgres is unavailable - sleeping"
   sleep 10
 done
