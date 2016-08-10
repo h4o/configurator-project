@@ -5,3 +5,6 @@ COPY server.xml /var/atlassian/application-data/bitbucket/shared
 COPY keystore.jks /usr/src/bitbucket/
 {% endif %}
 COPY setenv.sh /opt/atlassian/bitbucket/bin/
+COPY ./start.sh /usr/src/bitbucket
+WORKDIR /usr/src/bitbucket
+CMD ["sh","start.sh"]

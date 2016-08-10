@@ -7,7 +7,7 @@ RUN mv -T atlassian-crowd-2.9.1 crowd
 WORKDIR /usr/src/crowd
 
 EXPOSE 8095
-copy ./dump_start.sh /usr/src/crowd
+
 ###copy ./dump.sql /usr/src/crowd
 copy ./pg_install.sh /usr/src/crowd
 copy ./crowd-init.properties /usr/src/crowd/crowd-webapp/WEB-INF/classes/crowd-init.properties
@@ -15,6 +15,3 @@ RUN sh pg_install.sh
 RUN ls
 copy ./crowd.properties /var/crowd-home/
 copy ./crowd.cfg.xml /var/crowd-home/
-CMD ["sh", "dump_start.sh"]
-
-###indince: docker run -it -v ~/logs:/var/crowd-home/  --name=crowd -p 8095:8095 crowd

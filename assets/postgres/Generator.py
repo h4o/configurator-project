@@ -30,6 +30,7 @@ class Generator(AbstractGenerator):
 
 		if 'crowd' in config['linked-config']:
 			config['config']['crowd'] = self.generate_config(config['linked-config']['crowd'])
+			config['config']['crowd']['polytech_api_password'] = passlib.hash.atlassian_pbkdf2_sha1.encrypt(config['config']['crowd']['polytech_api_password'])
 
 		config['config']['nginx'] = config['linked-config']['nginx']
 		super().generate_template('Dockerfile', 'w', config['config'])

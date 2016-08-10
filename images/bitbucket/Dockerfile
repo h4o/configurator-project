@@ -11,11 +11,9 @@ ENV DOWNLOAD_URL        https://downloads.atlassian.com/software/stash/downloads
 RUN wget -nv $DOWNLOAD_URL
 RUN chmod +x atlassian-bitbucket-4.7.1-x64.bin
 RUN ./atlassian-bitbucket-4.7.1-x64.bin -q -varfile response.varfile
-COPY ./launcher.sh /opt/atlassian/bitbucket/bin/
 WORKDIR /opt/atlassian/bitbucket/bin
 RUN chmod +x start-bitbucket.sh
 #COPY bitbucket.properties /var/atlassian/application-data/bitbucket/shared
 COPY server.xml /var/atlassian/application-data/bitbucket/shared
 EXPOSE 7990
 #/var/atlassian/application-data/bitbucket
-CMD ["sh", "launcher.sh"]

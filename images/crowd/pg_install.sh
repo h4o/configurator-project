@@ -7,3 +7,4 @@ wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | \
  apt-get update 
 
 apt-get install -y postgresql-client-9.5
+apt-get install -y ntpdate
