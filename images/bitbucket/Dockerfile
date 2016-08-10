@@ -6,6 +6,7 @@ RUN apt-get update
 RUN	apt-get -y install git
 RUN apt-get install -y postgresql-client-9.5
 RUN apt-get install -y wget
+RUN apt-get install -y ntp
 ENV BITBUCKET_VERSION 4.7.1
 ENV DOWNLOAD_URL        https://downloads.atlassian.com/software/stash/downloads/atlassian-bitbucket-${BITBUCKET_VERSION}-x64.bin
 RUN wget -nv $DOWNLOAD_URL

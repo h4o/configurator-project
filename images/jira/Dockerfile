@@ -4,6 +4,7 @@ WORKDIR /usr/src/jira
 RUN apt-get update
 RUN apt-get install -y postgresql-client-9.5
 RUN apt-get install -y wget
+RUN apt-get install -y ntp
 ENV JIRA_VERSION 7.1.9
 ENV DOWNLOAD_URL        https://downloads.atlassian.com/software/jira/downloads/atlassian-jira-software-${JIRA_VERSION}-x64.bin
 RUN wget -nv $DOWNLOAD_URL
