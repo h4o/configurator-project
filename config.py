@@ -84,16 +84,25 @@ def askForConfig(imageList, configFile):
 				config[el][quest] = configData[el][quest]
 			elif configFile and 'common' in configData and quest in configData['common']:
 				config[el][quest] = configData['common'][quest]
-			else:
-				if not nameshown:
+			else:# if we can't find this parameter we ask for it
+				if not nameshown: # show the name of the configuration file if never shown
 					print(el+":")
 					nameshown = True
 				dataType = ""
+				# if we have ask for a file show it to the user
+
 				if 'from' in configInfo[el][quest] and configInfo[el][quest]['from'] == 'filesystem':
-					dataType = " (file) "
+					dataType = "file"
 					if configInfo[el][quest]['type'] == 'binary':
-						dataType = " (binary file) "
-				config[el][quest] = input(quest + dataType + "? ")
+						dataType = "binary file"
+				elif 'type' in configInfo[el][quest] and configInfo[el][quest]['type'] == 'boolean':
+					dataType = "boolean"
+				if dataType:
+					config[el][quest] = input(quest +" ("+ dataType +") " + "? ")
+				else:
+					config[el][quest] = input(quest + "? ")
+				if dataType == "boolean":
+					config[el][quest] = config[el][quest] == 'True'
 
 			if 'from' in configInfo[el][quest] and configInfo[el][quest]['from'] == 'filesystem':
 				readType = 'r'
