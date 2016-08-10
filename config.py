@@ -1,4 +1,5 @@
-#!/bin/python3
+#!/usr/bin/env python3
+
 import argparse
 from MetaLoader import MetaLoader
 from pydoc import locate

@@ -1,0 +1,40 @@
+common:
+  baseUrl: 'https://website.com'
+  username: 'user'
+  first_name: 'Fname'
+  last_name: 'Lname'
+  password: 'password'
+  mail: 'mail@domain.tld'
+  self_signed: True
+  keystore: 'server.jks'
+crowd:
+  license: 'crowd.license'
+  subdirectory: 'crowd'
+  serverId: 'BFV6-7P8Y-30RK-Y1XO'
+  polytech_api: True
+  polytech_api_password: 'pwd'
+  ip: 1
+postgres:
+  postgresUser: 'sql'
+  postgresPassword: 'password'
+bitbucket:
+  license: 'bitbucket.license'
+  username: 'username'
+  password: 'password'
+  subdirectory: 'bitbucket'
+  serverId: 'BHXZ-7DZC-MKVG-YG2F'
+  max_memory: 3000
+  ip: 3
+jira:
+  license: 'jira.license'
+  subdirectory: 'jira'
+  serverId: 'B8TN-HTUL-7W5A-Y7E5'
+  max_memory: 3000
+  ip: 2
+nginx:
+  certificate: 'tomcat.cert'
+  key: 'server.key'
+  ssl: True
+  baseUrl: 'website.com'
+  ip: 4
+
