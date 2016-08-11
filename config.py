@@ -103,7 +103,7 @@ def askForConfig(imageList, configFile):
 				else:
 					config[el][quest] = input(quest + "? ")
 				if dataType == "boolean":
-					config[el][quest] = config[el][quest] == 'True'
+					config[el][quest] = (config[el][quest] == 'True')
 
 			if 'from' in configInfo[el][quest] and configInfo[el][quest]['from'] == 'filesystem':
 				readType = 'r'
