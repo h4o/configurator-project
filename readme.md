@@ -111,3 +111,6 @@ Each image is set up with the given license, the certificate and the keystore if
 Some link are put in place:
 If crowd is here, jira and bitbucket will be configured to use it as a central login authority. 
 If jira and bitbucket are here, an applink is created between them. Unfortunately the applink does not seem to work for now and you need to set it up manually. 
+
+##Technical Data
+You can find more technical data about what configuration change does what [here](docs/technical/general.md)
