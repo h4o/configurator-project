@@ -4509,7 +4509,7 @@ COPY sta_drift_request (id, pr_id, old_from_hash, old_to_hash, new_from_hash, ne
 COPY sta_global_permission (id, perm_id, group_name, user_id) FROM stdin;
 1	9	stash-users	\N
 2	7	\N	1
-{% if crowd %}12	6	jira-administrators	\N
+{% if crowd %}12	7	jira-administrators	\N
 13	9	jira-developers	\N
 14	9	jira-users	\N
 {% endif %}\.
@@ -4546,7 +4546,7 @@ COPY sta_permission_type (perm_id, perm_weight) FROM stdin;
 4	6000
 5	7000
 6	10000
-7	10000
+7	8000
 \.
 
 
