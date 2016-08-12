@@ -13,11 +13,12 @@ def iterateDependency(imgs):
 	while imgs:  # an empty list is falsey
 		imgSwp = []
 		for img in imgs:
-
+			print('loading img '+img)
 			if img != 'config.py':
 				imageList[img] = MetaLoader('assets/' + img + '/')
-				if imageList[img].getRequiredImages():
-					for image in imageList[img].getRequiredImages():
+				required = imageList[img].getRequiredImages()
+				if required:
+					for image in required:
 						if image not in imgs and image not in imageList and image not in imgSwp:
 							imgSwp.append(image)
 		imgs = imgSwp
@@ -35,7 +36,6 @@ def genIp(configInfo,configData,config):
 				config[el]['ip'] = base_ip + str(configData[el]['ip'])
 			else:
 				raise Exception('ip conflict detected for ip '+str(configData[el]['ip']))
-	print("ips:"+str(ips))
 	for el in configInfo:
 		if 'ip' not in config[el]:
 			if not ip in ips:

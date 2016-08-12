@@ -4,16 +4,21 @@ import yaml
 class MetaLoader:
 	def __init__(self,base):
 		self.base = base
-		with open(base+"meta.yml","r") as stream:
+		self.meta = self.load()
+
+	def load(self):
+		base = self.base
+		meta = {}
+		with open(base + "meta.yml", "r") as stream:
 			try:
-				self.meta = meta = yaml.load(stream)
+				meta = yaml.load(stream)
 			except yaml.YAMLError as exc:
 				print(exc)
 			else:
 				pass
 			finally:
+				return meta
 				pass
-
 	def getConnectors(self):
 		connectors = []
 		for connector in self.meta:
