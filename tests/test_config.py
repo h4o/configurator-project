@@ -1,6 +1,7 @@
 import unittest
-import config;
-
+import config
+from unittest.mock import patch, MagicMock
+import MetaLoader
 
 class ConfigTest(unittest.TestCase):
 
@@ -56,8 +57,15 @@ class ConfigTest(unittest.TestCase):
 		self.assertEqual(config.minIp([1, 2, 3]), 4)
 		self.assertEqual(config.minIp([1, 3]), 2)
 
-	def testAskForConfig(self):
-		pass
+	@patch('MetaLoader.MetaLoader.load')
+	@patch('MetaLoader.MetaLoader.getRequiredImages')
+	def testIterateDependency(self, mock, rqmock):
+		rqmock.return_value = {}
+		mock.side_effect = [['test2'], ['test', 'test2'], []]
+		c = config.iterateDependency(['test', 'test3'])
+		self.assertIn('test', c)
+		self.assertIn('test2', c)
+		self.assertIn('test3', c)
 
 if __name__ == '__main__':
 	unittest.main()
