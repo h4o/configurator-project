@@ -27,5 +27,5 @@ class Generator(AbstractGenerator):
 		if config['config']['ssl']:
 			with open(self.dest + "cert.crt", 'wb') as fh:
 				fh.write(config['config']['certificate'])
-			with open(self.dest + "key.key", 'wb') as fh:
+			with open(self.dest + "key.key", 'w') as fh:
 				fh.write(config['config']['key'])
