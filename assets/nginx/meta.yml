@@ -12,6 +12,8 @@ required:
     necessary: false
   baseUrl:
     type: 'string'
+  redirect_to:
+    type: 'string'
 
 bitbucket:
 
