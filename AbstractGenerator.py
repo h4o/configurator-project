@@ -23,5 +23,5 @@ class AbstractGenerator(ABC):
         env = Environment(loader=FileSystemLoader(self.base + 'template'))
         template = env.get_template(filename)
         out = template.render(data)
-        with open(self.dest + filename, writeType) as fh:
+        with open(self.dest + filename, writeType, encoding="utf8") as fh:
             fh.write(out)
